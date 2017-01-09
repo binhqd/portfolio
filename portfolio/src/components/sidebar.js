@@ -8,9 +8,14 @@ class Sidebar extends Component {
 	}
 
 	render() {
+
+		const languages = this.profile.skills.map((skill, index) => <li key={index}>{ skill }</li>);
+
 		return (
 			<div className="sidebar">
 				<img src="./images/{ this.profile.picture }" alt="{ this.profile.name }" />
+				<h3>LANGUAGES</h3>
+				<ul>{ languages }</ul>
 			</div>
 		);
 	}
