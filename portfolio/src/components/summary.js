@@ -16,7 +16,8 @@ class Summary extends Component {
 					Career Profile
 				</h2>
                 <div className="summary">
-                    <p>{ this.profile.summary }</p>
+                    <p>{ this.profile.summary[0] }</p>
+					<p>{ this.profile.summary[1] }</p>
                 </div>
             </section>
 		);
