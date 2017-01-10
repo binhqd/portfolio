@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Sidebar from './components/sidebar';
 import Summary from './components/summary';
 import Skills from './components/skills';
+import Experience from './components/experience';
 
 const profile = {
 	name: 'Ilbert Esculpi',
@@ -15,11 +16,13 @@ const profile = {
 			including cakephp and laravel leaves me well suited to design, develop and test
 			complex, scalable and maintainable web applications.`,
 		`I also have a solid background in creating complex mobile applications for iOS and Android, both native and hybrid.
-			I can work independently and respect a deadline.
-			I feel comfortable working with a good team of developers.`
+			I really care about clean code, code refactor and good practices.`
 	],
 	contact: {
-		email: 'ilbert.esculpi@gmail.com',
+		email: {
+			display: 'ilbert.esculpi@gmail.com',
+			action: 'mailto:ilbert.esculpi@gmail.com'
+		},
 		phone: {
 			display: '+58 412 2982011',
 			action: 'tel:+584122982011'
@@ -54,24 +57,36 @@ const profile = {
 			{
 				title: 'React',
 				level: 50
+			},
+			{
+				title: 'Bootstrap & Foundation',
+				level: 90
+			},
+			{
+				title: 'bower, npm, gulp',
+				level: 80
 			}
 		],
 		backend: [
 			{
 				title: 'Laravel',
-				level: 95
+				level: 96
 			},
 			{
 				title: 'CakePHP',
-				level: 95
+				level: 96
 			},
 			{
-				title: 'Node',
+				title: 'Node.js',
 				level: 60
 			},
 			{
 				title: '.NET',
 				level: 40
+			},
+			{
+				title: 'MySQL',
+				level: 70
 			}
 		],
 		mobile: [
@@ -84,11 +99,39 @@ const profile = {
 				level: 60
 			},
 			{
-				title: 'ionic & phonegap',
+				title: 'ionic & cordova',
 				level: 80
 			}
 		]
-	}
+	},
+	tools: [
+		{
+			title: 'Elasticsearch'
+		},
+		{
+			title: 'Mongodb'
+		},
+		{
+			title: 'git'
+		}
+	],
+	experience: [
+		{
+			title: 'Project Team Lead',
+			company: 'Bee Concept Solutions',
+			location: 'Caracas, Venezuela',
+			period: {
+				from: new Date(2015, 7, 1),
+				to: null
+			},
+			description: [
+				`Working with other key members on projects to come up with the goals,
+					objectives and achieve the milestones.
+					Play a key role in constantly improving best practices, coding conventions and adoption of tools or technologies.
+					Tutoring 3-5 junior and senior developers to ensure software quality and keep projects on schedule.`
+			]
+		}
+	]
 };
 
 class App extends Component {
@@ -99,6 +142,7 @@ class App extends Component {
 				<Sidebar profile={profile} />
 				<div className="main-wrapper">
 					<Summary profile={profile} />
+					<Experience positions={profile.experience} />
 					<Skills skills={profile.skills} />
 				</div>
 			</div>

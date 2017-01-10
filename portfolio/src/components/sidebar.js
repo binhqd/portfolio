@@ -22,7 +22,7 @@ class Sidebar extends Component {
 	                <ul className="list-unstyled contact-list">
 	                    <li className="email">
 							<i className="fa fa-envelope"></i>
-							<a href="mailto: { this.profile.contact.email }">{ this.profile.contact.email }</a>
+							<a href={ this.profile.contact.email.action }>{ this.profile.contact.email.display }</a>
 						</li>
 	                    <li className="phone">
 							<i className="fa fa-phone"></i>
