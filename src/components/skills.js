@@ -18,9 +18,9 @@ class Skills extends Component {
 			</div>);
 		};
 
-		const skillSetFrontend = this.skills.frontend.map(template);
-		const skillSetBackend = this.skills.backend.map(template);
-		const skillSetMobile = this.skills.mobile.map(template);
+		const skillSetFrontend = this.skills.frontend.tools.map(template);
+		const skillSetBackend = this.skills.backend.tools.map(template);
+		const skillSetMobile = this.skills.mobile.tools.map(template);
 
 		return (
 			<section className="skills-section section">
@@ -32,14 +32,17 @@ class Skills extends Component {
                 <div className="skillset">
 					{ skillSetFrontend }
                 </div>
+				<p>Extra: { this.skills.frontend.extra.join(', ') }</p>
 				<h3>Backend</h3>
 				<div className="skillset">
 					{ skillSetBackend }
                 </div>
+				<p>Extra: { this.skills.backend.extra.join(', ') }</p>
 				<h3>Mobile</h3>
 				<div className="skillset">
 					{ skillSetMobile }
                 </div>
+				<p>Extra: { this.skills.mobile.extra.join(', ') }</p>
             </section>
 		);
 	}

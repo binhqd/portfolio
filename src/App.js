@@ -45,76 +45,66 @@ const profile = {
 		}
 	},
 	skills: {
-		frontend: [
-			{
-				title: 'HTML5 & javascript',
-				level: 80
-			},
-			{
-				title: 'Angular',
-				level: 70
-			},
-			{
-				title: 'React',
-				level: 50
-			},
-			{
-				title: 'Bootstrap & Foundation',
-				level: 90
-			},
-			{
-				title: 'bower, npm, gulp',
-				level: 80
-			}
-		],
-		backend: [
-			{
-				title: 'Laravel',
-				level: 96
-			},
-			{
-				title: 'CakePHP',
-				level: 96
-			},
-			{
-				title: 'Node.js',
-				level: 60
-			},
-			{
-				title: '.NET',
-				level: 40
-			},
-			{
-				title: 'MySQL',
-				level: 70
-			}
-		],
-		mobile: [
-			{
-				title: 'iOS',
-				level: 80
-			},
-			{
-				title: 'Android',
-				level: 60
-			},
-			{
-				title: 'ionic & cordova',
-				level: 80
-			}
-		]
-	},
-	tools: [
-		{
-			title: 'Elasticsearch'
+		frontend: {
+			tools: [
+				{
+					title: 'HTML5 & javascript',
+					level: 80
+				},
+				{
+					title: 'Bootstrap & Foundation',
+					level: 88
+				},
+				{
+					title: 'Angular',
+					level: 70
+				},
+				{
+					title: 'React',
+					level: 50
+				}
+			],
+			extra: ['bower', 'npm', 'gulp']
 		},
-		{
-			title: 'Mongodb'
+		backend: {
+			tools: [
+				{
+					title: 'Laravel',
+					level: 96
+				},
+				{
+					title: 'CakePHP',
+					level: 90
+				},
+				{
+					title: 'Node.js',
+					level: 60
+				},
+				{
+					title: '.NET',
+					level: 40
+				}
+			],
+			extra: ['Memcache', 'Codeception', 'Elasticsearch', 'Mongodb', 'MySQL']
 		},
-		{
-			title: 'git'
+		mobile: {
+			tools: [
+				{
+					title: 'ionic & cordova',
+					level: 90
+				},
+				{
+					title: 'iOS',
+					level: 85
+				},
+				{
+					title: 'Android',
+					level: 65
+				}
+			],
+			extra: ['Fabric', 'Appium']
 		}
-	],
+	},
 	experience: [
 		{
 			title: 'Project Team Lead',
@@ -129,6 +119,39 @@ const profile = {
 					objectives and achieve the milestones.
 					Play a key role in constantly improving best practices, coding conventions and adoption of tools or technologies.
 					Tutoring 3-5 junior and senior developers to ensure software quality and keep projects on schedule.`
+			]
+		},
+		{
+			title: 'Senior Developer',
+			company: 'Bee Concept Solutions',
+			location: 'Caracas, Venezuela',
+			period: {
+				from: new Date(2013, 8, 1),
+				to: new Date(2015, 6, 30)
+			},
+			description: [
+				`As a Senior Developer, I worked as a web and mobile developer for the company,
+					creating a codebase for common problems and documenting recurring scenarios. Most
+					of the web projects are created using CakePHP or laravel framework and the mobile
+					projects are native implementations in XCode (iOS) and Eclipse / Android Studio
+					(Android) or hybrid applications using phonegap and ionic.`
+			]
+		},
+		{
+			title: 'Senior Developer',
+			company: 'Nova Tecnología Creativa',
+			location: 'Caracas, Venezuela',
+			period: {
+				from: new Date(),
+				to: new Date()
+			},
+			description: [
+				`Create user information solutions by developing, implementing,
+					and maintaining Internet/intranet/mobile applications using different technologies.`,
+				`Develop applications by coordinating requirements, schedules, and activities;
+					contributing to team meetings;
+					troubleshooting development and production problems across multiple environments and operating platforms.`,
+				`Supports and develops web application developers by providing advice, coaching and educational opportunities.`
 			]
 		}
 	]
