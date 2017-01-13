@@ -9,6 +9,10 @@ class Summary extends Component {
 
 	render() {
 
+		if( !this.profile.summary ) {
+			return <div></div>
+		}
+
 		return (
 			<section className="section summary-section">
                 <h2 className="section-title">

@@ -9,6 +9,10 @@ class Skills extends Component {
 
 	render() {
 
+		if( !this.skills.length ) {
+			return <div></div>
+		}
+
 		const template = function(skill, index) {
 			return (<div className="item" key={index}>
 				<h3 className="level-title">{ skill.title }</h3>

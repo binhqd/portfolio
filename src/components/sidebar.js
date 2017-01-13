@@ -9,6 +9,10 @@ class Sidebar extends Component {
 
 	render() {
 
+		if( !this.profile.contact ) {
+			return <div></div>;
+		}
+
 		return (
 			<div className="sidebar-wrapper">
 

@@ -15,14 +15,11 @@ class Experience extends Component {
 				return <p>{ paragraph }</p>
 			});
 
-			const dateFrom = new Intl.DateTimeFormat('en-US').format(position.period.from);
-			const dateEnd = position.period.to ? new Intl.DateTimeFormat('en-US').format(position.period.to) : 'Present';
-
 			return (<div className="item" key={index}>
 				<div className="meta">
 					<div className="upper-row">
 						<h3 className="job-title">{ position.title }</h3>
-						<div className="time">{ dateFrom } - { dateEnd }</div>
+						<div className="time">{ position.period.from } - { position.period.to ? position.period.to : 'Present' }</div>
 					</div>
 					<div className="company">{ position.company } - { position.location }</div>
 				</div>
