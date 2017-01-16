@@ -11,7 +11,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: #545E6C;
-  background: #f5f5f5;
+  background: #EDEDED;
   font-size: 14px;
   padding: 30px;
   -webkit-font-smoothing: antialiased;
@@ -26,7 +26,7 @@ h6 {
   font-weight: 700;
 }
 a {
-  color: #2d7788;
+  color: #085b6b;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -34,7 +34,7 @@ a {
 }
 a:hover {
   text-decoration: underline;
-  color: #1a454f;
+  color: #031f24;
 }
 a:focus {
   text-decoration: none;
@@ -44,7 +44,7 @@ p {
   font-size: 16px;
 }
 .wrapper {
-  background: #42A8C0;
+  background: #0E97B2;
   max-width: 960px;
   margin: 0 auto;
   position: relative;
@@ -53,7 +53,7 @@ p {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 .sidebar-wrapper {
-  background: #42A8C0;
+  background: #0E97B2;
   position: absolute;
   right: 0;
   width: 240px;
@@ -171,7 +171,7 @@ p {
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 500;
-  color: #2d7788;
+  color: #085b6b;
   position: relative;
   margin-top: 0;
   margin-bottom: 20px;
@@ -190,7 +190,7 @@ p {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
-  background: #2d7788;
+  background: #085b6b;
   text-align: center;
   padding-top: 8px;
   font-size: 16px;
@@ -226,16 +226,21 @@ p {
   color: #97AAC3;
 }
 .main-wrapper .project-title {
-  font-size: 16px;
+  color: #085b6b;
+  font-size: 22px;
   font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 .main-wrapper .projects-section .intro {
   margin-bottom: 30px;
 }
 .main-wrapper .projects-section .item {
-  margin-bottom: 15px;
+  margin-bottom: 40px;
+}
+.main-wrapper .projects-section .gallery img {
+  width: 100%;
+  margin-bottom: 20px;
 }
 .skillset .item {
   margin-bottom: 15px;
@@ -248,11 +253,11 @@ p {
 }
 .skillset .level-bar {
   height: 12px;
-  background: #f5f5f5;
+  background: #EDEDED;
 }
 .skillset .level-bar-inner {
   height: 12px;
-  background: #7bc2d3;
+  background: #1fcbed;
 }
 .footer {
   padding: 30px;
