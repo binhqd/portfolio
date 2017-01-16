@@ -6,19 +6,35 @@ class Projects extends Component {
 		super(props);
 	}
 
+	componentDidMount() {
+		this.updateGallery();
+	}
+
+	componentDidUpdate() {
+		this.updateGallery();
+	}
+
+	updateGallery() {
+		window.updateGallery();
+	}
+
 	render() {
 
 		console.log('Projects::render()');
 
-		const imagesTemplate = function(image, index) {
-			return (
-				<div className="col-xs-6 col-md-3">
-					<img src={ "./images/projects/" + image } alt="" />
-				</div>
-			);
-		};
-
 		const template = function(project, index) {
+
+			const galleryID = project.title;
+
+			const imagesTemplate = function(image, index) {
+				return (
+					<div className="col-xs-6 col-md-3">
+						<a href={ "./images/projects/" + image } rel={ galleryID } className="fancybox">
+							<img src={ "./images/projects/" + image } alt="" />
+						</a>
+					</div>
+				);
+			};
 
 			var gallery = project.gallery.map(imagesTemplate);
 
