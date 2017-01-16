@@ -4,12 +4,15 @@ class Experience extends Component {
 
 	constructor(props) {
 		super(props);
-		this.positions = props.positions;
 	}
 
 	render() {
 
-		const experience = this.positions.map((position, index) => {
+		console.log('Experience::render()');
+
+		var positions = this.props.positions;
+
+		const experience = positions.map((position, index) => {
 
 			const details = position.description.map((paragraph) => {
 				return <p>{ paragraph }</p>

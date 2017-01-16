@@ -29,7 +29,7 @@ class App extends Component {
 				return response.json();
 			})
 			.then((json) => {
-				console.log('got it!');
+				console.log('got the profile!');
 				console.log(json);
 				this.setState({
 					profile: json
@@ -41,7 +41,7 @@ class App extends Component {
 				return response.json();
 			})
 			.then((json) => {
-				console.log('got it!');
+				console.log('got the experience!');
 				console.log(json);
 				this.setState({
 					experience: json
@@ -50,6 +50,7 @@ class App extends Component {
 	}
 
 	render() {
+		console.log('App::render()');
 		return (
 			<div className="wrapper">
 				<Sidebar profile={ this.state.profile } />

@@ -4,12 +4,15 @@ class Sidebar extends Component {
 
 	constructor(props) {
 		super(props);
-		this.profile = props.profile;
 	}
 
 	render() {
 
-		if( !this.profile.contact ) {
+		console.log('Sidebar::render()');
+
+		var profile = this.props.profile;
+
+		if( !profile.contact ) {
 			return <div></div>;
 		}
 
@@ -18,35 +21,35 @@ class Sidebar extends Component {
 
 	            <div className="profile-container">
 	                <img className="profile" src="./images/ilbesculpi.png" alt="" />
-	                <h1 className="name">{ this.profile.name }</h1>
-	                <h3 className="tagline">{ this.profile.tagline }</h3>
+	                <h1 className="name">{ profile.name }</h1>
+	                <h3 className="tagline">{ profile.tagline }</h3>
 	            </div>
 
 				<div className="contact-container container-block">
 	                <ul className="list-unstyled contact-list">
 	                    <li className="email">
 							<i className="fa fa-envelope"></i>
-							<a href={ this.profile.contact.email.action }>{ this.profile.contact.email.display }</a>
+							<a href={ profile.contact.email.action }>{ profile.contact.email.display }</a>
 						</li>
 	                    <li className="phone">
 							<i className="fa fa-phone"></i>
-							<a href={ this.profile.contact.phone.action }>{ this.profile.contact.phone.display }</a>
+							<a href={ profile.contact.phone.action }>{ profile.contact.phone.display }</a>
 						</li>
 	                    <li className="website">
 							<i className="fa fa-globe"></i>
-							<a href={ this.profile.contact.website.action } target="_blank">{ this.profile.contact.website.display }</a>
+							<a href={ profile.contact.website.action } target="_blank">{ profile.contact.website.display }</a>
 						</li>
 	                    <li className="linkedin">
 							<i className="fa fa-linkedin"></i>
-							<a href={ this.profile.contact.linkedin.action } target="_blank">{ this.profile.contact.linkedin.display }</a>
+							<a href={ profile.contact.linkedin.action } target="_blank">{ profile.contact.linkedin.display }</a>
 						</li>
 	                    <li className="github">
 							<i className="fa fa-github"></i>
-							<a href={ this.profile.contact.github.action } target="_blank">{ this.profile.contact.github.display }</a>
+							<a href={ profile.contact.github.action } target="_blank">{ profile.contact.github.display }</a>
 						</li>
 	                    <li className="twitter">
 							<i className="fa fa-twitter"></i>
-							<a href={ this.profile.contact.twitter.action } target="_blank">@{ this.profile.contact.twitter.display }</a>
+							<a href={ profile.contact.twitter.action } target="_blank">@{ profile.contact.twitter.display }</a>
 						</li>
 	                </ul>
 	            </div>

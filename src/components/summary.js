@@ -4,12 +4,15 @@ class Summary extends Component {
 
 	constructor(props) {
 		super(props);
-		this.profile = props.profile;
 	}
 
 	render() {
 
-		if( !this.profile.summary ) {
+		console.log('Summary::render()');
+
+		var profile = this.props.profile;
+
+		if( !profile.summary ) {
 			return <div></div>
 		}
 
@@ -20,8 +23,9 @@ class Summary extends Component {
 					Career Profile
 				</h2>
                 <div className="summary">
-                    <p>{ this.profile.summary[0] }</p>
-					<p>{ this.profile.summary[1] }</p>
+                    <p>{ profile.summary[0] }</p>
+					<p>{ profile.summary[1] }</p>
+					<p>{ profile.summary[2] }</p>
                 </div>
             </section>
 		);
