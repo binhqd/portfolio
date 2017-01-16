@@ -12,7 +12,14 @@ var updateBars = function() {
 
 };
 
+var updateGallery = function() {
+
+	$(".fancybox").fancybox();
+
+};
+
 window.updateBars = updateBars;
+window.updateGallery = updateGallery;
 
 jQuery(document).ready(function($) {
 
@@ -25,6 +32,8 @@ jQuery(document).ready(function($) {
     $(window).on('load', function() {
 
         updateBars();
+
+		updateGallery();
 
     });
 
