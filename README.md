@@ -16,4 +16,4 @@ See the [online portfolio](https://ilbesculpi.github.io/portfolio/)
 
 ## How does it work?
 
-The data is fetched from json files: profile.json and experience.json. Then they're rendered using React components.
+The data is fetched from json files: profile.json and experience.json. They're then rendered using React components.
