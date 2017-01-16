@@ -4,12 +4,27 @@ class Skills extends Component {
 
 	constructor(props) {
 		super(props);
-		this.skills = props.skills;
+	}
+
+	updateSkillBars() {
+		window.updateBars();
+	}
+
+	componentDidMount() {
+		this.updateSkillBars();
+	}
+
+	componentDidUpdate() {
+		this.updateSkillBars();
 	}
 
 	render() {
 
-		if( !this.skills.length ) {
+		console.log('Skills::render()');
+
+		var skills = this.props.skills;
+
+		if( !skills.frontend || !skills.backend ) {
 			return <div></div>
 		}
 
@@ -22,9 +37,9 @@ class Skills extends Component {
 			</div>);
 		};
 
-		const skillSetFrontend = this.skills.frontend.tools.map(template);
-		const skillSetBackend = this.skills.backend.tools.map(template);
-		const skillSetMobile = this.skills.mobile.tools.map(template);
+		const skillSetFrontend = skills.frontend.tools.map(template);
+		const skillSetBackend = skills.backend.tools.map(template);
+		const skillSetMobile = skills.mobile.tools.map(template);
 
 		return (
 			<section className="skills-section section">
@@ -36,17 +51,17 @@ class Skills extends Component {
                 <div className="skillset">
 					{ skillSetFrontend }
                 </div>
-				<p>Extra: { this.skills.frontend.extra.join(', ') }</p>
+				<p>Extra: { skills.frontend.extra.join(', ') }</p>
 				<h3>Backend</h3>
 				<div className="skillset">
 					{ skillSetBackend }
                 </div>
-				<p>Extra: { this.skills.backend.extra.join(', ') }</p>
+				<p>Extra: { skills.backend.extra.join(', ') }</p>
 				<h3>Mobile</h3>
 				<div className="skillset">
 					{ skillSetMobile }
                 </div>
-				<p>Extra: { this.skills.mobile.extra.join(', ') }</p>
+				<p>Extra: { skills.mobile.extra.join(', ') }</p>
             </section>
 		);
 	}
