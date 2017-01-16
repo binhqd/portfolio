@@ -4,6 +4,7 @@ import Sidebar from './components/sidebar';
 import Summary from './components/summary';
 import Skills from './components/skills';
 import Experience from './components/experience';
+import Projects from './components/projects';
 
 class App extends Component {
 
@@ -14,12 +15,15 @@ class App extends Component {
 			profile: {
 				skills: []
 			},
-			experience: []
+			experience: [],
+			projects: []
 		};
 	}
 
 	componentDidMount() {
 		this.fetchProfile();
+		this.fetchExperience();
+		this.fetchProjects();
 	}
 
 	fetchProfile() {
@@ -36,6 +40,10 @@ class App extends Component {
 				});
 			});
 
+	}
+
+	fetchExperience() {
+
 		fetch("data/experience.json")
 			.then((response) => {
 				return response.json();
@@ -49,6 +57,22 @@ class App extends Component {
 			});
 	}
 
+	fetchProjects() {
+
+		fetch("data/projects.json")
+			.then((response) => {
+				return response.json();
+			})
+			.then((json) => {
+				console.log('got the projects!');
+				console.log(json);
+				this.setState({
+					projects: json
+				});
+			});
+
+	}
+
 	render() {
 		console.log('App::render()');
 		return (
@@ -58,6 +82,7 @@ class App extends Component {
 					<Summary profile={ this.state.profile } />
 					<Experience positions={ this.state.experience } />
 					<Skills skills={ this.state.profile.skills } />
+					<Projects projects={ this.state.projects } />
 				</div>
 			</div>
 		);
