@@ -136,13 +136,20 @@ module.exports = function (env) {
   }
 
   let appVendors = [
-    'babel-polyfill'
+    'babel-polyfill',
+    'jquery',
+    'bootstrap/dist/js/bootstrap.min.js',
+    '@fancyapps/fancybox/dist/jquery.fancybox.js'
   ];
 
   let appEntry = {
     vendor: appVendors,
     app: [
-      'base/index.js'
+      'base/index.js',
+      'base/libs/main.js',
+      'font-awesome/less/font-awesome.less',
+      'bootstrap/dist/css/bootstrap.min.css',
+      '@fancyapps/fancybox/dist/jquery.fancybox.css'
     ]
   };
 
@@ -204,7 +211,7 @@ module.exports = function (env) {
     entry: appEntry,
     output: {
       path: path.join(__dirname, 'build'),
-      publicPath: isProd ? '/' : '/static',
+      publicPath: isProd ? './' : '/static',
       filename: isProd ? '[hash]-bundle.js' : 'bundle.js'
     },
     module: _module,

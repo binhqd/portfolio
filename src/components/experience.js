@@ -1,51 +1,47 @@
 import React, { Component } from 'react';
 
 class Experience extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-	constructor(props) {
-		super(props);
-	}
+  render() {
+    console.log('Experience::render()');
 
-	render() {
+    const positions = this.props.positions;
 
-		console.log('Experience::render()');
+    const experience = positions.map((position, index) => {
+      const details = position.description.map(paragraph => <p>{ paragraph }</p>);
 
-		var positions = this.props.positions;
+      return (
+        <div className="item" key={index}>
+          <div className="meta">
+            <div className="upper-row">
+              <h3 className="job-title">{ position.title }</h3>
+              <div className="time">{ position.period.from } - { position.period.to ? position.period.to : 'Present' }</div>
+            </div>
+            <div className="company">{ position.company } - { position.location }</div>
+          </div>
+          <div className="details">
+            { details }
+          </div>
+        </div>
+      );
+    });
 
-		const experience = positions.map((position, index) => {
+    return (
+      <section className="section experiences-section">
 
-			const details = position.description.map((paragraph) => {
-				return <p>{ paragraph }</p>
-			});
+        <h2 className="section-title">
+          <i className="fa fa-briefcase" />
+          Experience
+        </h2>
 
-			return (<div className="item" key={index}>
-				<div className="meta">
-					<div className="upper-row">
-						<h3 className="job-title">{ position.title }</h3>
-						<div className="time">{ position.period.from } - { position.period.to ? position.period.to : 'Present' }</div>
-					</div>
-					<div className="company">{ position.company } - { position.location }</div>
-				</div>
-				<div className="details">
-					{ details }
-				</div>
-			</div>);
-		});
+        { experience }
 
-		return (
-			<section className="section experiences-section">
-
-				<h2 className="section-title">
-					<i className="fa fa-briefcase"></i>
-					Experience
-				</h2>
-
-				{ experience }
-
-            </section>
-		);
-	}
-
+      </section>
+    );
+  }
 }
 
 export default Experience;
