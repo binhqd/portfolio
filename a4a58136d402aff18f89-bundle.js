@@ -117,7 +117,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
 /******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
@@ -9419,4 +9419,4 @@ module.exports = __webpack_require__("./node_modules/babel-polyfill/lib/index.js
 /***/ })
 
 /******/ });
-//# sourceMappingURL=ce3debc1e1f0877fb25a-bundle.js.map
+//# sourceMappingURL=a4a58136d402aff18f89-bundle.js.map
