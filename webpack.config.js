@@ -204,7 +204,7 @@ module.exports = function (env) {
     entry: appEntry,
     output: {
       path: path.join(__dirname, 'build'),
-      publicPath: isProd ? '/' : '/static',
+      publicPath: isProd ? './' : '/static',
       filename: isProd ? '[hash]-bundle.js' : 'bundle.js'
     },
     module: _module,
