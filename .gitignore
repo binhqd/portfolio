@@ -19,3 +19,6 @@ public/vendor
 
 # html templates
 html
+
+yarn-error.log
+yarn.lock
