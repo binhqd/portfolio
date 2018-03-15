@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import Bio from './components/bio';
+// import Bio from './components/bio';
 import Sidebar from './components/sidebar';
 import Summary from './components/summary';
 import Skills from './components/skills';
@@ -7,87 +7,74 @@ import Experience from './components/experience';
 import Projects from './components/projects';
 
 class App extends Component {
+  constructor(props) {
+    super();
+    this.props = props;
+    this.state = {
+      profile: {
+        skills: []
+      },
+      experience: [],
+      projects: []
+    };
+  }
 
-	constructor(props) {
-		super();
-		this.props = props;
-		this.state = {
-			profile: {
-				skills: []
-			},
-			experience: [],
-			projects: []
-		};
-	}
+  componentDidMount() {
+    this.fetchProfile();
+    this.fetchExperience();
+    this.fetchProjects();
+  }
 
-	componentDidMount() {
-		this.fetchProfile();
-		this.fetchExperience();
-		this.fetchProjects();
-	}
+  fetchProfile() {
+    fetch('data/profile.json')
+      .then(response => response.json())
+      .then((json) => {
+        console.log('got the profile!');
+        console.log(json);
+        this.setState({
+          profile: json
+        });
+      });
+  }
 
-	fetchProfile() {
+  fetchExperience() {
+    fetch('data/experience.json')
+      .then(response => response.json())
+      .then((json) => {
+        console.log('got the experience!');
+        console.log(json);
+        this.setState({
+          experience: json
+        });
+      });
+  }
 
-		fetch("data/profile.json")
-			.then((response) => {
-				return response.json();
-			})
-			.then((json) => {
-				console.log('got the profile!');
-				console.log(json);
-				this.setState({
-					profile: json
-				});
-			});
+  fetchProjects() {
+    fetch('data/projects.json')
+      .then(response => response.json())
+      .then((json) => {
+        console.log('got the projects!');
+        console.log(json);
+        this.setState({
+          projects: json
+        });
+      });
+  }
 
-	}
-
-	fetchExperience() {
-
-		fetch("data/experience.json")
-			.then((response) => {
-				return response.json();
-			})
-			.then((json) => {
-				console.log('got the experience!');
-				console.log(json);
-				this.setState({
-					experience: json
-				});
-			});
-	}
-
-	fetchProjects() {
-
-		fetch("data/projects.json")
-			.then((response) => {
-				return response.json();
-			})
-			.then((json) => {
-				console.log('got the projects!');
-				console.log(json);
-				this.setState({
-					projects: json
-				});
-			});
-
-	}
-
-	render() {
-		console.log('App::render()');
-		return (
-			<div className="wrapper">
-				<Sidebar profile={ this.state.profile } />
-				<div className="main-wrapper">
-					<Summary profile={ this.state.profile } />
-					<Experience positions={ this.state.experience } />
-					<Skills skills={ this.state.profile.skills } />
-					<Projects projects={ this.state.projects } />
-				</div>
-			</div>
-		);
-	}
-
+  render() {
+    console.log('App::render()');
+    return (
+      <div className="wrapper">
+        <Sidebar profile={this.state.profile} />
+        <div className="main-wrapper">
+          <Summary profile={this.state.profile} />
+          <Experience positions={this.state.experience} />
+          <Skills skills={this.state.profile.skills} />
+          <Projects projects={this.state.projects} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
