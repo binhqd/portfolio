@@ -1,40 +1,33 @@
-var updateBars = function() {
-
-	$('.level-bar-inner').each(function() {
-
-		var itemWidth = $(this).data('level');
-
-		$(this).animate({
-			width: itemWidth
-		}, 800);
-
-	});
-
+const updateBars = function () {
+  $('.level-bar-inner').each(function () {
+    const itemWidth = $(this).data('level');
+    $(this).animate({
+      width: itemWidth
+    }, 800);
+  });
 };
 
-var updateGallery = function() {
-
-	$(".fancybox").fancybox();
-
+const updateGallery = function () {
+  $('.fancybox').fancybox();
 };
 
 window.updateBars = updateBars;
 window.updateGallery = updateGallery;
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
+  /*= ====== Skillset *======= */
 
 
-    /*======= Skillset *=======*/
+  $('.level-bar-inner').css('width', '0');
 
+  $(window).on('load', function () {
+    updateBars();
 
-    $('.level-bar-inner').css('width', '0');
-
-    $(window).on('load', function() {
-
-        updateBars();
-
-		updateGallery();
-
-    });
-
+    updateGallery();
+  });
 });
+
+export {
+  updateBars,
+  updateGallery
+};

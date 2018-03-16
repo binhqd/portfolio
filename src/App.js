@@ -5,6 +5,7 @@ import Summary from './components/summary';
 import Skills from './components/skills';
 import Experience from './components/experience';
 import Projects from './components/projects';
+import { updateBars, updateGallery } from 'libs/main';
 
 class App extends Component {
   constructor(props) {
@@ -19,10 +20,20 @@ class App extends Component {
     };
   }
 
+  fixWindow() {
+    $('.level-bar-inner').css('width', '0');
+    $(window).on('load', function () {
+      updateBars();
+      updateGallery();
+    });
+  }
+
   componentDidMount() {
     this.fetchProfile();
     this.fetchExperience();
     this.fetchProjects();
+
+    this.fixWindow();
   }
 
   fetchProfile() {

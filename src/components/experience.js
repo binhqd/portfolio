@@ -11,7 +11,7 @@ class Experience extends Component {
     const positions = this.props.positions;
 
     const experience = positions.map((position, index) => {
-      const details = position.description.map(paragraph => <p>{ paragraph }</p>);
+      const details = position.description.map((paragraph, j) => <p key={j}>{ paragraph }</p>);
 
       return (
         <div className="item" key={index}>

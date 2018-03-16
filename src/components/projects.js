@@ -25,7 +25,7 @@ class Projects extends Component {
 
       const imagesTemplate = function (image, index) {
         return (
-          <div className="col-xs-6 col-md-3">
+          <div className="col-xs-6 col-md-3" key={index}>
             <a href={`./images/projects/${image}`} rel={galleryID} className="fancybox">
               <img src={`./images/projects/${image}`} alt="" />
             </a>
