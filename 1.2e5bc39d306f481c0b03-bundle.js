@@ -14597,11 +14597,27 @@ if (true) {
 
 /***/ }),
 
+/***/ "./public/css/styles.css":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"wrapper":"wrapper","sidebar-wrapper":"sidebar-wrapper","profile-container":"profile-container","name":"name","tagline":"tagline","profile":"profile","contact-list":"contact-list","fa":"fa","email":"email","container-block":"container-block","container-block-title":"container-block-title","degree":"degree","education-container":"education-container","item":"item","meta":"meta","time":"time","languages-container":"languages-container","lang-desc":"lang-desc","languages-list":"languages-list","interests-list":"interests-list","main-wrapper":"main-wrapper","section-title":"section-title","section":"section","experiences-section":"experiences-section","upper-row":"upper-row","job-title":"job-title","company":"company","project-title":"project-title","projects-section":"projects-section","intro":"intro","gallery":"gallery","skillset":"skillset","level-title":"level-title","level-bar":"level-bar","level-bar-inner":"level-bar-inner","footer":"footer","copyright":"copyright","fa-heart":"fa-heart"};
+
+/***/ }),
+
+/***/ "./src/App.css":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"sidebar":"sidebar"};
+
+/***/ }),
+
 /***/ "./src/App.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
+/* WEBPACK VAR INJECTION */(function($) {
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -14651,8 +14667,11 @@ var _projects = __webpack_require__("./src/components/projects.js");
 
 var _projects2 = _interopRequireDefault(_projects);
 
+var _main = __webpack_require__("./src/libs/main.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import Bio from './components/bio';
 var App = function (_Component) {
   (0, _inherits3.default)(App, _Component);
 
@@ -14673,11 +14692,22 @@ var App = function (_Component) {
   }
 
   (0, _createClass3.default)(App, [{
+    key: 'fixWindow',
+    value: function fixWindow() {
+      $('.level-bar-inner').css('width', '0');
+      $(window).on('load', function () {
+        (0, _main.updateBars)();
+        (0, _main.updateGallery)();
+      });
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.fetchProfile();
       this.fetchExperience();
       this.fetchProjects();
+
+      this.fixWindow();
     }
   }, {
     key: 'fetchProfile',
@@ -14745,10 +14775,9 @@ var App = function (_Component) {
   }]);
   return App;
 }(_react.Component);
-// import Bio from './components/bio';
-
 
 exports.default = App;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("./node_modules/jquery/src/jquery.js")))
 
 /***/ }),
 
@@ -14759,7 +14788,7 @@ exports.default = App;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _getPrototypeOf = __webpack_require__("./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
@@ -14789,83 +14818,81 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Experience = function (_Component) {
-	(0, _inherits3.default)(Experience, _Component);
+  (0, _inherits3.default)(Experience, _Component);
 
-	function Experience(props) {
-		(0, _classCallCheck3.default)(this, Experience);
-		return (0, _possibleConstructorReturn3.default)(this, (Experience.__proto__ || (0, _getPrototypeOf2.default)(Experience)).call(this, props));
-	}
+  function Experience(props) {
+    (0, _classCallCheck3.default)(this, Experience);
+    return (0, _possibleConstructorReturn3.default)(this, (Experience.__proto__ || (0, _getPrototypeOf2.default)(Experience)).call(this, props));
+  }
 
-	(0, _createClass3.default)(Experience, [{
-		key: 'render',
-		value: function render() {
+  (0, _createClass3.default)(Experience, [{
+    key: 'render',
+    value: function render() {
+      console.log('Experience::render()');
 
-			console.log('Experience::render()');
+      var positions = this.props.positions;
 
-			var positions = this.props.positions;
+      var experience = positions.map(function (position, index) {
+        var details = position.description.map(function (paragraph, j) {
+          return _react2.default.createElement(
+            'p',
+            { key: j },
+            paragraph
+          );
+        });
 
-			var experience = positions.map(function (position, index) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'item', key: index },
+          _react2.default.createElement(
+            'div',
+            { className: 'meta' },
+            _react2.default.createElement(
+              'div',
+              { className: 'upper-row' },
+              _react2.default.createElement(
+                'h3',
+                { className: 'job-title' },
+                position.title
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'time' },
+                position.period.from,
+                ' - ',
+                position.period.to ? position.period.to : 'Present'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'company' },
+              position.company,
+              ' - ',
+              position.location
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'details' },
+            details
+          )
+        );
+      });
 
-				var details = position.description.map(function (paragraph) {
-					return _react2.default.createElement(
-						'p',
-						null,
-						paragraph
-					);
-				});
-
-				return _react2.default.createElement(
-					'div',
-					{ className: 'item', key: index },
-					_react2.default.createElement(
-						'div',
-						{ className: 'meta' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'upper-row' },
-							_react2.default.createElement(
-								'h3',
-								{ className: 'job-title' },
-								position.title
-							),
-							_react2.default.createElement(
-								'div',
-								{ className: 'time' },
-								position.period.from,
-								' - ',
-								position.period.to ? position.period.to : 'Present'
-							)
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'company' },
-							position.company,
-							' - ',
-							position.location
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'details' },
-						details
-					)
-				);
-			});
-
-			return _react2.default.createElement(
-				'section',
-				{ className: 'section experiences-section' },
-				_react2.default.createElement(
-					'h2',
-					{ className: 'section-title' },
-					_react2.default.createElement('i', { className: 'fa fa-briefcase' }),
-					'Experience'
-				),
-				experience
-			);
-		}
-	}]);
-	return Experience;
+      return _react2.default.createElement(
+        'section',
+        { className: 'section experiences-section' },
+        _react2.default.createElement(
+          'h2',
+          { className: 'section-title' },
+          _react2.default.createElement('i', { className: 'fa fa-briefcase' }),
+          'Experience'
+        ),
+        experience
+      );
+    }
+  }]);
+  return Experience;
 }(_react.Component);
 
 exports.default = Experience;
@@ -14879,7 +14906,7 @@ exports.default = Experience;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _getPrototypeOf = __webpack_require__("./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
@@ -14909,108 +14936,106 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Projects = function (_Component) {
-	(0, _inherits3.default)(Projects, _Component);
+  (0, _inherits3.default)(Projects, _Component);
 
-	function Projects(props) {
-		(0, _classCallCheck3.default)(this, Projects);
-		return (0, _possibleConstructorReturn3.default)(this, (Projects.__proto__ || (0, _getPrototypeOf2.default)(Projects)).call(this, props));
-	}
+  function Projects(props) {
+    (0, _classCallCheck3.default)(this, Projects);
+    return (0, _possibleConstructorReturn3.default)(this, (Projects.__proto__ || (0, _getPrototypeOf2.default)(Projects)).call(this, props));
+  }
 
-	(0, _createClass3.default)(Projects, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			this.updateGallery();
-		}
-	}, {
-		key: 'componentDidUpdate',
-		value: function componentDidUpdate() {
-			this.updateGallery();
-		}
-	}, {
-		key: 'updateGallery',
-		value: function updateGallery() {
-			window.updateGallery();
-		}
-	}, {
-		key: 'render',
-		value: function render() {
+  (0, _createClass3.default)(Projects, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateGallery();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this.updateGallery();
+    }
+  }, {
+    key: 'updateGallery',
+    value: function updateGallery() {
+      window.updateGallery();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      console.log('Projects::render()');
 
-			console.log('Projects::render()');
+      var template = function template(project, index) {
+        var galleryID = project.title;
 
-			var template = function template(project, index) {
+        var imagesTemplate = function imagesTemplate(image, index) {
+          return _react2.default.createElement(
+            'div',
+            { className: 'col-xs-6 col-md-3', key: index },
+            _react2.default.createElement(
+              'a',
+              { href: './images/projects/' + image, rel: galleryID, className: 'fancybox' },
+              _react2.default.createElement('img', { src: './images/projects/' + image, alt: '' })
+            )
+          );
+        };
 
-				var galleryID = project.title;
+        var gallery = project.gallery.map(imagesTemplate);
 
-				var imagesTemplate = function imagesTemplate(image, index) {
-					return _react2.default.createElement(
-						'div',
-						{ className: 'col-xs-6 col-md-3' },
-						_react2.default.createElement(
-							'a',
-							{ href: "./images/projects/" + image, rel: galleryID, className: 'fancybox' },
-							_react2.default.createElement('img', { src: "./images/projects/" + image, alt: '' })
-						)
-					);
-				};
+        return _react2.default.createElement(
+          'div',
+          { className: 'item', key: index },
+          _react2.default.createElement(
+            'h3',
+            { className: 'project-title' },
+            project.title
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'project-tagline' },
+            project.description
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'project-tagline' },
+            project.tags
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            _react2.default.createElement(
+              'a',
+              { href: project.url, target: '_blank' },
+              project.url
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'row gallery' },
+            gallery
+          )
+        );
+      };
 
-				var gallery = project.gallery.map(imagesTemplate);
+      var projects = this.props.projects;
+      var content = projects.map(template);
 
-				return _react2.default.createElement(
-					'div',
-					{ className: 'item', key: index },
-					_react2.default.createElement(
-						'h3',
-						{ className: 'project-title' },
-						project.title
-					),
-					_react2.default.createElement(
-						'p',
-						{ className: 'project-tagline' },
-						project.description
-					),
-					_react2.default.createElement(
-						'p',
-						{ className: 'project-tagline' },
-						project.tags
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						_react2.default.createElement(
-							'a',
-							{ href: project.url, target: '_blank' },
-							project.url
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'row gallery' },
-						gallery
-					)
-				);
-			};
+      if (projects.count == 0) {
+        return _react2.default.createElement('div', null);
+      }
 
-			var projects = this.props.projects;
-			var content = projects.map(template);
-
-			if (projects.count == 0) {
-				return _react2.default.createElement('div', null);
-			}
-
-			return _react2.default.createElement(
-				'section',
-				{ className: 'section projects-section' },
-				_react2.default.createElement(
-					'h2',
-					{ className: 'section-title' },
-					_react2.default.createElement('i', { className: 'fa fa-archive' }),
-					'Projects'
-				),
-				content
-			);
-		}
-	}]);
-	return Projects;
+      return _react2.default.createElement(
+        'section',
+        { className: 'section projects-section' },
+        _react2.default.createElement(
+          'h2',
+          { className: 'section-title' },
+          _react2.default.createElement('i', { className: 'fa fa-archive' }),
+          'Projects'
+        ),
+        content
+      );
+    }
+  }]);
+  return Projects;
 }(_react.Component);
 
 exports.default = Projects;
@@ -15024,7 +15049,7 @@ exports.default = Projects;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _getPrototypeOf = __webpack_require__("./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
@@ -15054,116 +15079,115 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Sidebar = function (_Component) {
-	(0, _inherits3.default)(Sidebar, _Component);
+  (0, _inherits3.default)(Sidebar, _Component);
 
-	function Sidebar(props) {
-		(0, _classCallCheck3.default)(this, Sidebar);
-		return (0, _possibleConstructorReturn3.default)(this, (Sidebar.__proto__ || (0, _getPrototypeOf2.default)(Sidebar)).call(this, props));
-	}
+  function Sidebar(props) {
+    (0, _classCallCheck3.default)(this, Sidebar);
+    return (0, _possibleConstructorReturn3.default)(this, (Sidebar.__proto__ || (0, _getPrototypeOf2.default)(Sidebar)).call(this, props));
+  }
 
-	(0, _createClass3.default)(Sidebar, [{
-		key: 'render',
-		value: function render() {
+  (0, _createClass3.default)(Sidebar, [{
+    key: 'render',
+    value: function render() {
+      console.log('Sidebar::render()');
 
-			console.log('Sidebar::render()');
+      var profile = this.props.profile;
 
-			var profile = this.props.profile;
+      if (!profile.contact) {
+        return _react2.default.createElement('div', null);
+      }
 
-			if (!profile.contact) {
-				return _react2.default.createElement('div', null);
-			}
-
-			return _react2.default.createElement(
-				'div',
-				{ className: 'sidebar-wrapper' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'profile-container' },
-					_react2.default.createElement('img', { className: 'profile', src: './images/ilbesculpi.png', alt: '' }),
-					_react2.default.createElement(
-						'h1',
-						{ className: 'name' },
-						profile.name
-					),
-					_react2.default.createElement(
-						'h3',
-						{ className: 'tagline' },
-						profile.tagline
-					)
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'contact-container container-block' },
-					_react2.default.createElement(
-						'ul',
-						{ className: 'list-unstyled contact-list' },
-						_react2.default.createElement(
-							'li',
-							{ className: 'email' },
-							_react2.default.createElement('i', { className: 'fa fa-envelope' }),
-							_react2.default.createElement(
-								'a',
-								{ href: profile.contact.email.action },
-								profile.contact.email.display
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: 'phone' },
-							_react2.default.createElement('i', { className: 'fa fa-phone' }),
-							_react2.default.createElement(
-								'a',
-								{ href: profile.contact.phone.action },
-								profile.contact.phone.display
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: 'website' },
-							_react2.default.createElement('i', { className: 'fa fa-globe' }),
-							_react2.default.createElement(
-								'a',
-								{ href: profile.contact.website.action, target: '_blank' },
-								profile.contact.website.display
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: 'linkedin' },
-							_react2.default.createElement('i', { className: 'fa fa-linkedin' }),
-							_react2.default.createElement(
-								'a',
-								{ href: profile.contact.linkedin.action, target: '_blank' },
-								profile.contact.linkedin.display
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: 'github' },
-							_react2.default.createElement('i', { className: 'fa fa-github' }),
-							_react2.default.createElement(
-								'a',
-								{ href: profile.contact.github.action, target: '_blank' },
-								profile.contact.github.display
-							)
-						),
-						_react2.default.createElement(
-							'li',
-							{ className: 'twitter' },
-							_react2.default.createElement('i', { className: 'fa fa-twitter' }),
-							_react2.default.createElement(
-								'a',
-								{ href: profile.contact.twitter.action, target: '_blank' },
-								'@',
-								profile.contact.twitter.display
-							)
-						)
-					)
-				)
-			);
-		}
-	}]);
-	return Sidebar;
+      return _react2.default.createElement(
+        'div',
+        { className: 'sidebar-wrapper' },
+        _react2.default.createElement(
+          'div',
+          { className: 'profile-container' },
+          _react2.default.createElement('img', { className: 'profile', src: './images/ilbesculpi.png', alt: '' }),
+          _react2.default.createElement(
+            'h1',
+            { className: 'name' },
+            profile.name
+          ),
+          _react2.default.createElement(
+            'h3',
+            { className: 'tagline' },
+            profile.tagline
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'contact-container container-block' },
+          _react2.default.createElement(
+            'ul',
+            { className: 'list-unstyled contact-list' },
+            _react2.default.createElement(
+              'li',
+              { className: 'email' },
+              _react2.default.createElement('i', { className: 'fa fa-envelope' }),
+              _react2.default.createElement(
+                'a',
+                { href: profile.contact.email.action },
+                profile.contact.email.display
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'phone' },
+              _react2.default.createElement('i', { className: 'fa fa-phone' }),
+              _react2.default.createElement(
+                'a',
+                { href: profile.contact.phone.action },
+                profile.contact.phone.display
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'website' },
+              _react2.default.createElement('i', { className: 'fa fa-globe' }),
+              _react2.default.createElement(
+                'a',
+                { href: profile.contact.website.action, target: '_blank' },
+                profile.contact.website.display
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'linkedin' },
+              _react2.default.createElement('i', { className: 'fa fa-linkedin' }),
+              _react2.default.createElement(
+                'a',
+                { href: profile.contact.linkedin.action, target: '_blank' },
+                profile.contact.linkedin.display
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'github' },
+              _react2.default.createElement('i', { className: 'fa fa-github' }),
+              _react2.default.createElement(
+                'a',
+                { href: profile.contact.github.action, target: '_blank' },
+                profile.contact.github.display
+              )
+            ),
+            _react2.default.createElement(
+              'li',
+              { className: 'twitter' },
+              _react2.default.createElement('i', { className: 'fa fa-twitter' }),
+              _react2.default.createElement(
+                'a',
+                { href: profile.contact.twitter.action, target: '_blank' },
+                '@',
+                profile.contact.twitter.display
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+  return Sidebar;
 }(_react.Component);
 
 exports.default = Sidebar;
@@ -15177,7 +15201,7 @@ exports.default = Sidebar;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _getPrototypeOf = __webpack_require__("./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
@@ -15207,122 +15231,121 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Skills = function (_Component) {
-	(0, _inherits3.default)(Skills, _Component);
+  (0, _inherits3.default)(Skills, _Component);
 
-	function Skills(props) {
-		(0, _classCallCheck3.default)(this, Skills);
-		return (0, _possibleConstructorReturn3.default)(this, (Skills.__proto__ || (0, _getPrototypeOf2.default)(Skills)).call(this, props));
-	}
+  function Skills(props) {
+    (0, _classCallCheck3.default)(this, Skills);
+    return (0, _possibleConstructorReturn3.default)(this, (Skills.__proto__ || (0, _getPrototypeOf2.default)(Skills)).call(this, props));
+  }
 
-	(0, _createClass3.default)(Skills, [{
-		key: 'updateSkillBars',
-		value: function updateSkillBars() {
-			window.updateBars();
-		}
-	}, {
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			this.updateSkillBars();
-		}
-	}, {
-		key: 'componentDidUpdate',
-		value: function componentDidUpdate() {
-			this.updateSkillBars();
-		}
-	}, {
-		key: 'render',
-		value: function render() {
+  (0, _createClass3.default)(Skills, [{
+    key: 'updateSkillBars',
+    value: function updateSkillBars() {
+      window.updateBars();
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.updateSkillBars();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this.updateSkillBars();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      console.log('Skills::render()');
 
-			console.log('Skills::render()');
+      var skills = this.props.skills;
 
-			var skills = this.props.skills;
+      if (!skills.frontend || !skills.backend) {
+        return _react2.default.createElement('div', null);
+      }
 
-			if (!skills.frontend || !skills.backend) {
-				return _react2.default.createElement('div', null);
-			}
+      var template = function template(skill, index) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'item', key: index },
+          _react2.default.createElement(
+            'h3',
+            { className: 'level-title' },
+            skill.title
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'level-bar' },
+            _react2.default.createElement('div', { className: 'level-bar-inner', 'data-level': skill.level + '%' })
+          )
+        );
+      };
 
-			var template = function template(skill, index) {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'item', key: index },
-					_react2.default.createElement(
-						'h3',
-						{ className: 'level-title' },
-						skill.title
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'level-bar' },
-						_react2.default.createElement('div', { className: 'level-bar-inner', 'data-level': skill.level + '%' })
-					)
-				);
-			};
+      var skillSetFrontend = skills.frontend.tools.map(template);
+      var skillSetBackend = skills.backend.tools.map(template);
+      var skillSetMobile = skills.mobile.tools.map(template);
 
-			var skillSetFrontend = skills.frontend.tools.map(template);
-			var skillSetBackend = skills.backend.tools.map(template);
-			var skillSetMobile = skills.mobile.tools.map(template);
-
-			return _react2.default.createElement(
-				'section',
-				{ className: 'skills-section section' },
-				_react2.default.createElement(
-					'h2',
-					{ className: 'section-title' },
-					_react2.default.createElement('i', { className: 'fa fa-rocket' }),
-					'Skills & Proficiency'
-				),
-				_react2.default.createElement(
-					'h3',
-					null,
-					'Frontend'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'skillset' },
-					skillSetFrontend
-				),
-				_react2.default.createElement(
-					'p',
-					null,
-					'Extra: ',
-					skills.frontend.extra.join(', ')
-				),
-				_react2.default.createElement(
-					'h3',
-					null,
-					'Backend'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'skillset' },
-					skillSetBackend
-				),
-				_react2.default.createElement(
-					'p',
-					null,
-					'Extra: ',
-					skills.backend.extra.join(', ')
-				),
-				_react2.default.createElement(
-					'h3',
-					null,
-					'Mobile'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'skillset' },
-					skillSetMobile
-				),
-				_react2.default.createElement(
-					'p',
-					null,
-					'Extra: ',
-					skills.mobile.extra.join(', ')
-				)
-			);
-		}
-	}]);
-	return Skills;
+      return _react2.default.createElement(
+        'section',
+        { className: 'skills-section section' },
+        _react2.default.createElement(
+          'h2',
+          { className: 'section-title' },
+          _react2.default.createElement('i', { className: 'fa fa-rocket' }),
+          'Skills & Proficiency'
+        ),
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Frontend'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'skillset' },
+          skillSetFrontend
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Extra: ',
+          skills.frontend.extra.join(', ')
+        ),
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Backend'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'skillset' },
+          skillSetBackend
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Extra: ',
+          skills.backend.extra.join(', ')
+        ),
+        _react2.default.createElement(
+          'h3',
+          null,
+          'Mobile'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'skillset' },
+          skillSetMobile
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          'Extra: ',
+          skills.mobile.extra.join(', ')
+        )
+      );
+    }
+  }]);
+  return Skills;
 }(_react.Component);
 
 exports.default = Skills;
@@ -15336,7 +15359,7 @@ exports.default = Skills;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _getPrototypeOf = __webpack_require__("./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
@@ -15366,57 +15389,56 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Summary = function (_Component) {
-	(0, _inherits3.default)(Summary, _Component);
+  (0, _inherits3.default)(Summary, _Component);
 
-	function Summary(props) {
-		(0, _classCallCheck3.default)(this, Summary);
-		return (0, _possibleConstructorReturn3.default)(this, (Summary.__proto__ || (0, _getPrototypeOf2.default)(Summary)).call(this, props));
-	}
+  function Summary(props) {
+    (0, _classCallCheck3.default)(this, Summary);
+    return (0, _possibleConstructorReturn3.default)(this, (Summary.__proto__ || (0, _getPrototypeOf2.default)(Summary)).call(this, props));
+  }
 
-	(0, _createClass3.default)(Summary, [{
-		key: 'render',
-		value: function render() {
+  (0, _createClass3.default)(Summary, [{
+    key: 'render',
+    value: function render() {
+      console.log('Summary::render()');
 
-			console.log('Summary::render()');
+      var profile = this.props.profile;
 
-			var profile = this.props.profile;
+      if (!profile.summary) {
+        return _react2.default.createElement('div', null);
+      }
 
-			if (!profile.summary) {
-				return _react2.default.createElement('div', null);
-			}
-
-			return _react2.default.createElement(
-				'section',
-				{ className: 'section summary-section' },
-				_react2.default.createElement(
-					'h2',
-					{ className: 'section-title' },
-					_react2.default.createElement('i', { className: 'fa fa-user' }),
-					'Career Profile'
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'summary' },
-					_react2.default.createElement(
-						'p',
-						null,
-						profile.summary[0]
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						profile.summary[1]
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						profile.summary[2]
-					)
-				)
-			);
-		}
-	}]);
-	return Summary;
+      return _react2.default.createElement(
+        'section',
+        { className: 'section summary-section' },
+        _react2.default.createElement(
+          'h2',
+          { className: 'section-title' },
+          _react2.default.createElement('i', { className: 'fa fa-user' }),
+          'Career Profile'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'summary' },
+          _react2.default.createElement(
+            'p',
+            null,
+            profile.summary[0]
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            profile.summary[1]
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            profile.summary[2]
+          )
+        )
+      );
+    }
+  }]);
+  return Summary;
 }(_react.Component);
 
 exports.default = Summary;
@@ -15462,39 +15484,39 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 "use strict";
 /* WEBPACK VAR INJECTION */(function($, jQuery) {
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var updateBars = function updateBars() {
-
-	$('.level-bar-inner').each(function () {
-
-		var itemWidth = $(this).data('level');
-
-		$(this).animate({
-			width: itemWidth
-		}, 800);
-	});
+  $('.level-bar-inner').each(function () {
+    var itemWidth = $(this).data('level');
+    $(this).animate({
+      width: itemWidth
+    }, 800);
+  });
 };
 
 var updateGallery = function updateGallery() {
-
-	$(".fancybox").fancybox();
+  $('.fancybox').fancybox();
 };
 
 window.updateBars = updateBars;
 window.updateGallery = updateGallery;
 
 jQuery(document).ready(function ($) {
+  /*= ====== Skillset *======= */
 
-	/*======= Skillset *=======*/
+  $('.level-bar-inner').css('width', '0');
 
-	$('.level-bar-inner').css('width', '0');
+  $(window).on('load', function () {
+    updateBars();
 
-	$(window).on('load', function () {
-
-		updateBars();
-
-		updateGallery();
-	});
+    updateGallery();
+  });
 });
+
+exports.updateBars = updateBars;
+exports.updateGallery = updateGallery;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("./node_modules/jquery/src/jquery.js"), __webpack_require__("./node_modules/jquery/src/jquery.js")))
 
 /***/ }),
@@ -15506,10 +15528,12 @@ __webpack_require__("./src/index.js");
 __webpack_require__("./src/libs/main.js");
 __webpack_require__("./node_modules/font-awesome/less/font-awesome.less");
 __webpack_require__("./node_modules/bootstrap/dist/css/bootstrap.min.css");
-module.exports = __webpack_require__("./node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css");
+__webpack_require__("./node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css");
+__webpack_require__("./src/App.css");
+module.exports = __webpack_require__("./public/css/styles.css");
 
 
 /***/ })
 
 },[[0,0]]]);
-//# sourceMappingURL=1.75149637d68650a899d2-bundle.js.map
+//# sourceMappingURL=1.2e5bc39d306f481c0b03-bundle.js.map
