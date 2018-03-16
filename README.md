@@ -1,8 +1,8 @@
-# Portfolio
+# BinhQD's Portfolio
 
 This is a simple portfolio built using [React](https://facebook.github.io/react/).
 
-See the [online portfolio](https://ilbesculpi.github.io/portfolio/)
+See the [online portfolio](https://binhqd.github.io/portfolio/)
 
 
 ## React Components
