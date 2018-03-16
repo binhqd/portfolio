@@ -5,8 +5,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
-// import config from './constants/config';
 const config = require('./src/constants/config');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let {
   NODE_ENV,
@@ -24,12 +24,13 @@ if (!API_URL) {
 
 const sourcePath = path.join(__dirname, './');
 
-let _module = {
+const _module = {
   rules: [
     {
       test: /\.(ico|jpg|jpeg|png|eot|ttf|woff|svg)/,
       loader: 'file-loader'
-    }, {
+    },
+    {
       test: /\.(js|jsx)$/,
       exclude: /(node_modules)/,
       loader: 'babel-loader',
@@ -39,16 +40,17 @@ let _module = {
         }], 'react', 'stage-2'],
         plugins: ['transform-runtime', 'transform-decorators-legacy']
       }
-    }, {
+    },
+    {
       test: /\.less$/,
-      //use: ['css-loader', 'less-loader']
       use: ExtractTextPlugin.extract({
         use: [
           'css-loader',
           'less-loader'
         ]
       })
-    }, {
+    },
+    {
       test: /\.(scss|css)$/,
       include: /components\/partials\//,
       use: ExtractTextPlugin.extract({
@@ -65,7 +67,8 @@ let _module = {
           'sass-loader'
         ]
       })
-    }, {
+    },
+    {
       test: /\.(css|scss)$/,
       exclude: /components\/partials\//,
       use: ExtractTextPlugin.extract({
@@ -82,11 +85,13 @@ let _module = {
           'sass-loader'
         ]
       })
-    }, {
+    },
+    {
       test: /\.(txt)$/,
       loader: 'raw-loader',
       include: path.resolve(__dirname, './components/layout/main/modules')
-    }, {
+    },
+    {
       test: /\.(md)$/,
       loader: ExtractTextPlugin.extract({
         use: [
@@ -98,7 +103,7 @@ let _module = {
   noParse: [/jszip.js$/]
 };
 
-module.exports = function (env) {
+module.exports = function () {
   const isProd = NODE_ENV === 'production';
 
   const envars = {
@@ -112,17 +117,21 @@ module.exports = function (env) {
     new webpack.DefinePlugin({
       'process.env': envars
     }),
-    new ExtractTextPlugin({filename: (isProd ? '[hash]-docs.css' : 'docs.css'), allChunks: true}),
+    new ExtractTextPlugin({
+      filename: (isProd ? '[hash]-docs.css' : 'docs.css'), allChunks: true
+    }),
+    new CopyWebpackPlugin([
+      { from: './public/images', to: './images' },
+      { from: './src/assets/data', to: './data' }
+    ]),
     new webpack.NamedModulesPlugin()
   ];
 
   if (isProd) {
-    plugins.push(
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false
-      })
-    );
+    plugins.push(new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }));
   } else {
     plugins.push(
       new webpack.HotModuleReplacementPlugin(),
@@ -135,42 +144,43 @@ module.exports = function (env) {
     );
   }
 
-  let appVendors = [
+  const appVendors = [
     'babel-polyfill',
     'jquery',
     'bootstrap/dist/js/bootstrap.min.js',
     '@fancyapps/fancybox/dist/jquery.fancybox.js'
   ];
 
-  let appEntry = {
+  const appEntry = {
     vendor: appVendors,
     app: [
       'base/index.js',
       'base/libs/main.js',
       'font-awesome/less/font-awesome.less',
       'bootstrap/dist/css/bootstrap.min.css',
-      '@fancyapps/fancybox/dist/jquery.fancybox.css'
+      '@fancyapps/fancybox/dist/jquery.fancybox.css',
+      './src/App.css',
+      './public/css/styles.css'
     ]
   };
 
-  let appResolver = {
+  const appResolver = {
     extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx'],
     alias: {
       base_styles: path.resolve(__dirname, './assets/styles/global_styles/'),
       node_modules: path.resolve(__dirname, './node_modules/'),
       components: path.resolve(__dirname, './src/components/'),
-      pages: path.resolve(__dirname, './pages/'),
-      assets: path.resolve(__dirname, './assets/'),
-      jquery: path.resolve(__dirname, 'node_modules') + '/jquery/src/jquery.js',
+      pages: path.resolve(__dirname, './src/pages/'),
+      assets: path.resolve(__dirname, './src/assets/'),
+      jquery: `${path.resolve(__dirname, 'node_modules')}/jquery/src/jquery.js`,
       slick: path.resolve(__dirname, './node_modules/slick-carousel/slick'),
       'rc-slider': path.resolve(__dirname, './node_modules/rc-slider/lib'),
       'react-collapse': path.resolve(__dirname, './node_modules/react-collapse/lib'),
       slider: path.resolve(__dirname, './node_modules/react-slick/lib'),
       'react-draft-wysiwyg': path.resolve(__dirname, './node_modules/react-draft-wysiwyg'),
-      api: path.resolve(__dirname, './api/'),
+      api: path.resolve(__dirname, './src/api/'),
       base: path.resolve(__dirname, './src/'),
-      lib: path.resolve(__dirname, './lib/'),
-      dummy: path.resolve(__dirname, './dummy/'),
+      libs: path.resolve(__dirname, './src/libs/'),
       constants: path.resolve(__dirname, './src/constants/')
     },
     modules: [
@@ -180,9 +190,9 @@ module.exports = function (env) {
     ]
   };
 
-  let devServerConfig = {
+  const devServerConfig = {
     contentBase: './',
-    publicPath: '/static',
+    publicPath: '/',
     historyApiFallback: true,
     host: '0.0.0.0',
     port: process.env.PORT || 3002,
@@ -205,13 +215,13 @@ module.exports = function (env) {
     }
   };
 
-  let commonConfig = {
+  const commonConfig = {
     devtool: isProd ? 'source-map' : 'eval-source-map',
     context: sourcePath,
     entry: appEntry,
     output: {
       path: path.join(__dirname, 'build'),
-      publicPath: isProd ? './' : '/static',
+      publicPath: isProd ? './' : '/',
       filename: isProd ? '[hash]-bundle.js' : 'bundle.js'
     },
     module: _module,
@@ -248,7 +258,7 @@ module.exports = function (env) {
     ]
   };
 
-  let clientAppEntry = [
+  const clientAppEntry = [
     ...appEntry.app
   ];
   // clientAppEntry.unshift('base/index.js');
