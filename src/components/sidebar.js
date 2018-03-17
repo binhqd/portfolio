@@ -18,7 +18,7 @@ class Sidebar extends Component {
       <div className="sidebar-wrapper">
 
         <div className="profile-container">
-          <img className="profile" src="./images/ilbesculpi.png" alt="" />
+          <img className="profile" src={require('assets/images/binhqd.jpg')} alt="" />
           <h1 className="name">{ profile.name }</h1>
           <h3 className="tagline">{ profile.tagline }</h3>
         </div>
