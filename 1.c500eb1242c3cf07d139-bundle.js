@@ -2010,6 +2010,60 @@ module.exports = getActiveElement;
 
 /***/ }),
 
+/***/ "./node_modules/fbjs/lib/invariant.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if (false) {}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+
+/***/ }),
+
 /***/ "./node_modules/fbjs/lib/isNode.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14283,6 +14337,111 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 
+/***/ "./node_modules/prop-types/factoryWithThrowingShims.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var emptyFunction = __webpack_require__("./node_modules/fbjs/lib/emptyFunction.js");
+var invariant = __webpack_require__("./node_modules/fbjs/lib/invariant.js");
+var ReactPropTypesSecret = __webpack_require__("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+
+module.exports = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+    invariant(
+      false,
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim
+  };
+
+  ReactPropTypes.checkPropTypes = emptyFunction;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/index.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (false) { var throwOnDirectAccess, isValidElement, REACT_ELEMENT_TYPE; } else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__("./node_modules/prop-types/factoryWithThrowingShims.js")();
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/cjs/react-dom.production.min.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14781,6 +14940,13 @@ exports.default = App;
 
 /***/ }),
 
+/***/ "./src/assets/images/binhqd.jpg":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "db81e2e4dabee186395659adf53aa32b.jpg";
+
+/***/ }),
+
 /***/ "./src/components/experience.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -15103,7 +15269,7 @@ var Sidebar = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'profile-container' },
-          _react2.default.createElement('img', { className: 'profile', src: './images/ilbesculpi.png', alt: '' }),
+          _react2.default.createElement('img', { className: 'profile', src: __webpack_require__("./src/assets/images/binhqd.jpg"), alt: '' }),
           _react2.default.createElement(
             'h1',
             { className: 'name' },
@@ -15386,22 +15552,23 @@ var _react = __webpack_require__("./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = __webpack_require__("./node_modules/prop-types/index.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Summary = function (_Component) {
   (0, _inherits3.default)(Summary, _Component);
 
-  function Summary(props) {
+  function Summary() {
     (0, _classCallCheck3.default)(this, Summary);
-    return (0, _possibleConstructorReturn3.default)(this, (Summary.__proto__ || (0, _getPrototypeOf2.default)(Summary)).call(this, props));
+    return (0, _possibleConstructorReturn3.default)(this, (Summary.__proto__ || (0, _getPrototypeOf2.default)(Summary)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(Summary, [{
     key: 'render',
     value: function render() {
-      console.log('Summary::render()');
-
       var profile = this.props.profile;
+
 
       if (!profile.summary) {
         return _react2.default.createElement('div', null);
@@ -15440,6 +15607,8 @@ var Summary = function (_Component) {
   }]);
   return Summary;
 }(_react.Component);
+
+Summary.propTypes =  false ? undefined : {};
 
 exports.default = Summary;
 
@@ -15536,4 +15705,4 @@ module.exports = __webpack_require__("./public/css/styles.css");
 /***/ })
 
 },[[0,0]]]);
-//# sourceMappingURL=1.2e5bc39d306f481c0b03-bundle.js.map
+//# sourceMappingURL=1.c500eb1242c3cf07d139-bundle.js.map
