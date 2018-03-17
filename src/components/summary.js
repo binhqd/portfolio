@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 
 class Summary extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    console.log('Summary::render()');
-
-    const profile = this.props.profile;
+    const { profile } = this.props;
 
     if (!profile.summary) {
       return <div />;
@@ -29,5 +24,9 @@ class Summary extends Component {
     );
   }
 }
+
+Summary.propTypes = {
+  profile: PropTypes.object.isRequired
+};
 
 export default Summary;
