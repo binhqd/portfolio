@@ -1,43 +1,252 @@
 [
   {
-    "title": "Project Team Lead",
-    "company": "Bee Concept Solutions",
-    "location": "Caracas, Venezuela",
+    "title": "CTO",
+    "company": "GreenGlobal IT Solutions Consulting",
+    "location": "Da Nang, Vietnam",
     "period": {
-      "from": "July 2015",
+      "from": "Dec 2016",
       "to": null
     },
     "description": [
-      "Working with other key members on projects to come up with the goals, objectives and achieve the milestones.",
-      "Play a key role in constantly improving best practices, coding conventions and adoption of tools or technologies.",
-      "Tutoring 3-5 junior and senior developers to ensure software quality and keep projects on schedule."
+      {
+        "type": "list",
+        "values": [
+          "Provide solution about architecture and technologies for projects",
+          "Coaching new technical leads",
+          "Seminar & Coaching new technologies",
+          "Operate technical team to do code review for projects",
+          "Technical supervisor for big and medium projects",
+          "Improve quality for products about performance, scalability, high availability",
+          "Play as Release Manager and do devops job for some key projects/products at company",
+          {
+            "type": "list",
+            "key": "Create technical checklist for project teams",
+            "values": [
+              "Development checklist (from beginning to production)",
+              "Security checklist (cover all common security issue)",
+              "Frontend output checklist (best optimization for speed and UX)",
+              "WordPress development checklist (do it right at the first time, prepare all material for development, deployment and optimization)",
+              "Deployment checklist (for better use of automation tools and communication)",
+              "Code review checklist"
+            ],
+            "gui": {
+              "type": "ul",
+              "className": "dash-list"
+            }
+          }
+        ],
+        "gui": {
+          "type": "ul",
+          "className": "dash-list"
+        }
+      }
     ]
   },
   {
-    "title": "Senior Developer",
-    "company": "Bee Concept Solutions",
-    "location": "Caracas, Venezuela",
+    "title": "Quality Assurance Quality Control Manager",
+    "company": "GreenGlobal IT Solutions Consulting",
+    "location": "Da Nang, Vietnam",
     "period": {
-      "from": "August 2013",
-      "to": "June 2015"
+      "from": "Jun 2016",
+      "to": "Dec 2016"
     },
     "description": [
-      "As a Senior Developer, I worked as a web and mobile developer for the company, creating a codebase for common problems and documenting recurring scenarios.",
-      "Most of the web projects are created using CakePHP or laravel framework and the mobile projects are native implementations in XCode (iOS) and Eclipse / Android Studio (Android) or hybrid applications using phonegap and ionic."
+      "My responsibility is to build company processes and especially a QA team with high effectively people that proactive in work and can make sure the quality of company's projects.",
+      {
+        "type": "list",
+        "key": "The result of my team and me",
+        "values": [
+          {
+            "key": "A full life cycle process for managing a project from initial stage until going-live and then close the project that helps PM do their best on their project. The following contents:",
+            "values": [
+              "Todo for project manager on each stage (Initial stage --> Planning --> Execution --> --> Closing)",
+              "Period of NC (Non-compliance) check",
+              "Project commitment checklist",
+              "Guideline step by step"
+            ],
+            "gui": {
+              "type": "ol",
+              "className": ""
+            }
+          },
+          "Motivate and inspire mindset of QA team to focus on product quality than just testing functional",
+          "Hiring and building QA to have people with proactive working and good communication",
+          "Apply many other processes and development standards to catch up IT industry standard such as Git Flow process, Development Conventions (PHP, Python, Ruby, C#, Java, NodeJS, etc)"
+        ],
+        "gui": {
+          "type": "ol",
+          "className": ""
+        }
+      }
     ]
   },
   {
-    "title": "Senior Developer",
-    "company": "Nova Tecnologia Creativa",
-    "location": "Caracas, Venezuela",
+    "title": "Release Manager",
+    "company": "GreenGlobal IT Solutions Consulting",
+    "location": "Da Nang, Vietnam",
     "period": {
-      "from": "June 2011",
-      "to": "August 2013"
+      "from": "Dec 2015",
+      "to": "Jun 2016"
     },
     "description": [
-      "Create user information solutions by developing, implementing, and maintaining Internet/intranet/mobile applications using different technologies.",
-      "Develop applications by coordinating requirements, schedules, and activities; contributing to team meetings; troubleshooting development and production problems across multiple environments and operating platforms.",
-      "Supports and develops web application developers by providing advice, coaching and educational opportunities."
+      {
+        "type": "list",
+        "values": [
+          "Training best practice of GIT flow process for employees",
+          "Do code review for each Pull Request of company projects and project of remote team",
+          "Do DevOps role using automation tools such as Jenkins, Gitlab CI, Ansible for setting up project environment for both development and production",
+          "Apply coding standard and best practice for team members"
+        ],
+        "gui": {
+          "type": "ul",
+          "className": "dash-list"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Senior Frontend Developer",
+    "company": "GreenGlobal IT Solutions Consulting",
+    "location": "Da Nang, Vietnam",
+    "period": {
+      "from": "Oct 2014",
+      "to": "Dec 2015"
+    },
+    "description": [
+      {
+        "type": "list",
+        "key": "Play as senior frontend developer for some project",
+        "values": [
+          "Ideapod (AngularJS)",
+          "Roomi (AngularJS)",
+          "Docker studio (ReactJS, Electron)"
+        ],
+        "gui": {
+          "type": "ul",
+          "className": "dash-list"
+        }
+      },
+      "Training team member to join those projects"
+    ]
+  },
+  {
+    "title": "Technical Lead",
+    "company": "GreenGlobal IT Solutions Consulting",
+    "location": "Da Nang, Vietnam",
+    "period": {
+      "from": "Jan 2013",
+      "to": "Nov 2015"
+    },
+    "description": [
+      {
+        "type": "list",
+        "values": [
+          "Design project architecture and technical from overall to detail. Researching and choosing project technologies.",
+          "2 years experience with Amazon Web Services (EC2, EBS, S3, CloudFront, SES, ElastiCache, etc)",
+          "Experience on architecture design for large scale web application with mobile integration using RESTful",
+          "Ability of collaborating people from different team in a project",
+          "Experience with Linux server and most common applications for server side"
+        ],
+        "gui": {
+          "type": "ul",
+          "className": "dash-list"
+        }
+      }
+
+    ]
+  },
+  {
+    "title": "Head of Research Development Department",
+    "company": "GreenGlobal IT Solutions Consulting",
+    "location": "Da Nang, Vietnam",
+    "period": {
+      "from": "Nov 2013",
+      "to": "Oct 2014"
+    },
+    "description": [
+      {
+        "type": "list",
+        "values": [
+          "Research technical feasibility of new projects",
+          "Suggest technologies for start up projects",
+          "Help other projects on technical issue",
+          "Research on selecting right & modern development methods for company",
+          "Currently focusing on operation phase of projects like deployments, continuous integration, tracking & monitoring, etc"
+        ],
+        "gui": {
+          "type": "ul",
+          "className": "dash-list"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Senior Developer & Server Administrator",
+    "company": "GreenGlobal IT Solutions Consulting",
+    "location": "Da Nang, Vietnam",
+    "period": {
+      "from": "Jan 2013",
+      "to": "Mar 2013"
+    },
+    "description": [
+      {
+        "type": "list",
+        "values": [
+          "In charge of setting server environment for Slidelane project including of Mail Server",
+          "Setup server on AWS and integrate project with supporting of S3",
+          "Developing first version of Profile & Following module"
+        ],
+        "gui": {
+          "type": "ul",
+          "className": "dash-list"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Project Manager",
+    "company": "GreenGlobal IT Solutions Consulting",
+    "location": "Da Nang, Vietnam",
+    "period": {
+      "from": "Jan 2009",
+      "to": "Jan 2013"
+    },
+    "description": [
+      {
+        "type": "list",
+        "values": [
+          "My work is organize our team to develop some Social Networking site with high traffic, high availability",
+          "I'm interested in working with database (not only RDBMS, but also NOSQL)",
+          "I'm also interested in working with system architecture like building project structure, replication, backing up, monitoring, security, ..."
+        ],
+        "gui": {
+          "type": "ul",
+          "className": "dash-list"
+        }
+      }
+    ]
+  },
+  {
+    "title": "Project Manager",
+    "company": "NSE Co.ltd",
+    "location": "Da Nang, Vietnam",
+    "period": {
+      "from": "Jan 2007",
+      "to": "Dec 2008"
+    },
+    "description": [
+      {
+        "type": "list",
+        "values": [
+          "Create a web analytic website like Google Analytic",
+          "Create recruitment website for Company",
+          "Create time tracking to monitor employee"
+        ],
+        "gui": {
+          "type": "ul",
+          "className": "dash-list"
+        }
+      }
     ]
   }
 ]

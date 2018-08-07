@@ -14947,6 +14947,14 @@ module.exports = __webpack_require__.p + "db81e2e4dabee186395659adf53aa32b.jpg";
 
 /***/ }),
 
+/***/ "./src/components/experience.css":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"top-list":"top-list","dash-list":"dash-list"};
+
+/***/ }),
+
 /***/ "./src/components/experience.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14981,7 +14989,46 @@ var _react = __webpack_require__("./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _experience = __webpack_require__("./src/components/experience.css");
+
+var _experience2 = _interopRequireDefault(_experience);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ListItem = function ListItem(props) {
+  var ListType = "ul";
+  if (props.item.gui && props.item.gui.type) {
+    ListType = props.item.gui.type;
+  }
+
+  return _react2.default.createElement(
+    'li',
+    null,
+    props.item.key && _react2.default.createElement(
+      'p',
+      null,
+      props.item.key,
+      ':'
+    ),
+    _react2.default.createElement(
+      ListType,
+      { className: props.item.gui.className },
+      props.item.values.map(function (item, index) {
+        if (item.values) {
+          return _react2.default.createElement(ListItem, {
+            item: item
+          });
+        } else {
+          return _react2.default.createElement(
+            'li',
+            { key: index },
+            item
+          );
+        }
+      })
+    )
+  );
+};
 
 var Experience = function (_Component) {
   (0, _inherits3.default)(Experience, _Component);
@@ -14999,12 +15046,19 @@ var Experience = function (_Component) {
       var positions = this.props.positions;
 
       var experience = positions.map(function (position, index) {
-        var details = position.description.map(function (paragraph, j) {
-          return _react2.default.createElement(
-            'p',
-            { key: j },
-            paragraph
-          );
+        var details = position.description.map(function (item, j) {
+
+          if (item.values) {
+            return _react2.default.createElement(ListItem, {
+              item: item
+            });
+          } else {
+            return _react2.default.createElement(
+              'p',
+              { key: j },
+              item
+            );
+          }
         });
 
         return _react2.default.createElement(
@@ -15040,7 +15094,11 @@ var Experience = function (_Component) {
           _react2.default.createElement(
             'div',
             { className: 'details' },
-            details
+            _react2.default.createElement(
+              'ul',
+              { className: 'top-list' },
+              details
+            )
           )
         );
       });
@@ -15581,26 +15639,18 @@ var Summary = function (_Component) {
           'h2',
           { className: 'section-title' },
           _react2.default.createElement('i', { className: 'fa fa-user' }),
-          'Career Profile'
+          'Summary'
         ),
         _react2.default.createElement(
           'div',
           { className: 'summary' },
-          _react2.default.createElement(
-            'p',
-            null,
-            profile.summary[0]
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            profile.summary[1]
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            profile.summary[2]
-          )
+          profile.summary.map(function (item) {
+            return _react2.default.createElement(
+              'p',
+              null,
+              item
+            );
+          })
         )
       );
     }
@@ -15705,4 +15755,4 @@ module.exports = __webpack_require__("./public/css/styles.css");
 /***/ })
 
 },[[0,0]]]);
-//# sourceMappingURL=1.c500eb1242c3cf07d139-bundle.js.map
+//# sourceMappingURL=1.87097304fdeda7172962-bundle.js.map
