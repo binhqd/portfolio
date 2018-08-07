@@ -1,0 +1,12 @@
+.top-list {
+  list-style: none;
+  padding-left: 0px;
+  line-height: 2;
+  font-size: 14px;
+}
+
+.dash-list {
+  padding-left: 20px;
+  line-height: 2;
+  font-size: 14px;
+}
