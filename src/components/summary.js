@@ -13,12 +13,16 @@ class Summary extends Component {
       <section className="section summary-section">
         <h2 className="section-title">
           <i className="fa fa-user" />
-          Career Profile
+          Summary
         </h2>
         <div className="summary">
-          <p>{ profile.summary[0] }</p>
-          <p>{ profile.summary[1] }</p>
-          <p>{ profile.summary[2] }</p>
+          {
+            profile.summary.map(item => {
+              return (
+                <p>{item}</p>
+              )
+            })
+          }
         </div>
       </section>
     );
