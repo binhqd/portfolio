@@ -31,6 +31,7 @@ class App extends Component {
   componentDidMount() {
     this.fetchProfile();
     this.fetchExperience();
+    this.fetchSkills();
     this.fetchProjects();
 
     this.fixWindow();
@@ -60,6 +61,18 @@ class App extends Component {
       });
   }
 
+  fetchSkills() {
+    fetch('data/skills.json')
+      .then(response => response.json())
+      .then((json) => {
+        console.log('got the skills!');
+        console.log(json);
+        this.setState({
+          skills: json
+        });
+      });
+  }
+
   fetchProjects() {
     fetch('data/projects.json')
       .then(response => response.json())
@@ -80,7 +93,7 @@ class App extends Component {
         <div className="main-wrapper">
           <Summary profile={this.state.profile} />
           <Experience positions={this.state.experience} />
-          <Skills skills={this.state.profile.skills} />
+          <Skills skills={this.state.skills} />
           <Projects projects={this.state.projects} />
         </div>
       </div>
