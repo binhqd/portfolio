@@ -1,0 +1,216 @@
+{
+  "Enterprise Application": {
+    "description": [
+      "I have a chance to be technical lead on 2 enterprise applications which serving many thousands of users at the same time which have a many different applications and processes connect together"
+    ],
+    "tools": [
+      {
+        "title": "Enterprise Service Bus",
+        "level": 70
+      },
+      {
+        "title": "BPMN",
+        "level": 80
+      },
+      {
+        "title": "SSO, CAS, WSO2 IS",
+        "level": 80
+      },
+      {
+        "title": "WSO2",
+        "level": 60
+      }
+    ],
+    "projects": [
+      {
+        "name": "CPC eOffice",
+        "description": ""
+      },
+      {
+        "name": "Local Government Service Platform",
+        "description": ""
+      }
+    ],
+    "extra": ["WSO2 Analytics", "Data Service Server", "Microservices", "API Gateway"]
+  },
+  "System Architect & DevOps": {
+    "description": [
+
+    ],
+    "tools": [
+      {
+        "title": "Microservice design pattern",
+        "level": 90
+      },
+      {
+        "title": "Functional Programming design pattern",
+        "level": 80
+      },
+      {
+        "title": "Client-server design pattern",
+        "level": 95
+      },
+      {
+        "title": "Workflow Programming design pattern",
+        "level": 75
+      },
+      {
+        "title": "Realtime, Event based application design pattern",
+        "level": 75
+      },
+      {
+        "title": "Serverless",
+        "level": 70
+      },
+      {
+        "title": "Proxy: HAProxy, OpenResty",
+        "level": 90
+      },
+      {
+        "title": "Docker, Vagrant",
+        "level": 90
+      },
+      {
+        "title": "Queue: RabbitMQ, SQS",
+        "level": 90
+      },
+      {
+        "title": "Cloud: AWS",
+        "level": 80
+      },
+      {
+        "title": "CI Tools: Jenkins, Travis, Codeship",
+        "level": 90
+      },
+      {
+        "title": "Provisioning Tools: Ansible, Chef",
+        "level": 80
+      },
+      {
+        "title": "UML Tool: Enterprise Architecture (EA), Paradigm",
+        "level": "80"
+      },
+      {
+        "title": "Monitoring Tool: Zabbix",
+        "level": "90"
+      }
+    ],
+    "extra": ["Event Programming design pattern", "MVC", "MVVM", "Server side rendering"]
+  },
+  "Database": {
+    "description": [
+
+    ],
+    "tools": [
+      {
+        "title": "RDBMS: MySQL, MariaDB",
+        "level": "90"
+      },
+      {
+        "title": "SQL Server",
+        "level": "80"
+      },
+      {
+        "title": "MongoDB",
+        "level": "90"
+      },
+      {
+        "title": "Search Engine: ElasticSearch, Apache Solr, Apache Lucence",
+        "level": "80"
+      },
+      {
+        "title": "Key-value DBs: Redis, Memcached",
+        "level": "90"
+      },
+      {
+        "title": "Graph DB: Neo4j",
+        "level": "80"
+      }
+    ],
+    "extra": ["IndexedDB", "Cassandra", "SQLite"]
+  },
+  "Frontend": {
+    "description": [],
+    "tools": [
+      {
+        "title": "React Native",
+        "level": 95
+      },
+      {
+        "title": "ReactJS",
+        "level": 95
+      },
+      {
+        "title": "Angular",
+        "level": 90
+      },
+      {
+        "title": "End-to-End automation test: Cucumber, Protractor",
+        "level": 80
+      },
+      {
+        "title": "HTML5 & Javascript",
+        "level": 80
+      },
+      {
+        "title": "Bootstrap & Foundation",
+        "level": 88
+      }
+    ],
+    "extra": ["bower", "npm", "gulp", "yarn", "jquery", "WordPress"]
+  },
+  "Backend": {
+    "tools": [
+      {
+        "title": "Node.js: ExpressJS, Loopback, HapiJS",
+        "level": 85
+      },
+      {
+        "title": "RESTFul API",
+        "level": 95
+      },
+      {
+        "title": "ORM, I18n, Hook, MVC",
+        "level": 85
+      },
+      {
+        "title": "Unit test, mock",
+        "level": 85
+      },
+      {
+        "title": "PHP: CakePHP, Yii, CodeIgnitor, Phalcon, Laravel",
+        "level": 80
+      },
+      {
+        "title": ".NET",
+        "level": 40
+      },
+      {
+        "title": ".Java",
+        "level": 40
+      },
+      {
+        "title": "Ruby",
+        "level": 30
+      },
+      {
+        "title": "Python",
+        "level": 30
+      }
+    ],
+    "extra": ["Best Practice", "Common mistake", "Proxy", "JWT", "OAuth2", "Queue", "Nginx", "Apache"]
+  },
+  "Mobile": {
+    "tools": [
+      {
+        "title": "React Native",
+        "level": 90
+      },
+      {
+        "title": "Ionic & Cordova",
+        "level": 90
+      }
+    ],
+    "extra": ["Flexbox"]
+  }
+}

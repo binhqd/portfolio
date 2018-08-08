@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListItem from './ListItem';
 
 class Skills extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Skills extends Component {
 
     const skills = this.props.skills;
 
-    if (!skills.frontend || !skills.backend) {
+    if (!skills) {
       return <div />;
     }
 
@@ -37,31 +38,51 @@ class Skills extends Component {
       );
     };
 
-    const skillSetFrontend = skills.frontend.tools.map(template);
-    const skillSetBackend = skills.backend.tools.map(template);
-    const skillSetMobile = skills.mobile.tools.map(template);
-
     return (
       <section className="skills-section section">
         <h2 className="section-title">
           <i className="fa fa-rocket" />
-          Skills &amp; Proficiency
+          Technical Specialist
         </h2>
-        <h3>Frontend</h3>
-        <div className="skillset">
-          { skillSetFrontend }
-        </div>
-        <p>Extra: { skills.frontend.extra.join(', ') }</p>
-        <h3>Backend</h3>
-        <div className="skillset">
-          { skillSetBackend }
-        </div>
-        <p>Extra: { skills.backend.extra.join(', ') }</p>
-        <h3>Mobile</h3>
-        <div className="skillset">
-          { skillSetMobile }
-        </div>
-        <p>Extra: { skills.mobile.extra.join(', ') }</p>
+        {
+          Object.keys(skills).map((key, index) => {
+            let details = null;
+            if (skills[key].description) {
+              details = skills[key].description.map((item, j) => {
+                if (item.values) {
+                  return (
+                    <ListItem
+                      item = {item}
+                    />
+                  )
+                } else {
+                  return (
+                    <p key={j}>{ item }</p>
+                  )
+                }
+              });
+            }
+
+            return (
+              <div key={index}>
+                <h3>{key}</h3>
+                { details}
+                <div className="skillset">
+                  { skills[key].tools.map(template) }
+                </div>
+                {
+                  skills[key].extra &&
+                  <p><b>Extra</b>: { skills[key].extra.join(', ') }</p>
+                }
+
+                {
+                  skills[key].projects &&
+                  <p><b>Projects</b>: { skills[key].projects.map(item => item.name).join(', ') }</p>
+                }
+              </div>
+            )
+          })
+        }
       </section>
     );
   }
