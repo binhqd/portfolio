@@ -29,6 +29,13 @@ module.exports = { "default": __webpack_require__("./node_modules/core-js/librar
 
 /***/ }),
 
+/***/ "./node_modules/babel-runtime/core-js/object/keys.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__("./node_modules/core-js/library/fn/object/keys.js"), __esModule: true };
+
+/***/ }),
+
 /***/ "./node_modules/babel-runtime/core-js/object/set-prototype-of.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -229,6 +236,15 @@ module.exports = function defineProperty(it, key, desc) {
 
 __webpack_require__("./node_modules/core-js/library/modules/es6.object.get-prototype-of.js");
 module.exports = __webpack_require__("./node_modules/core-js/library/modules/_core.js").Object.getPrototypeOf;
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/fn/object/keys.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("./node_modules/core-js/library/modules/es6.object.keys.js");
+module.exports = __webpack_require__("./node_modules/core-js/library/modules/_core.js").Object.keys;
 
 
 /***/ }),
@@ -1376,6 +1392,22 @@ var $getPrototypeOf = __webpack_require__("./node_modules/core-js/library/module
 __webpack_require__("./node_modules/core-js/library/modules/_object-sap.js")('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
     return $getPrototypeOf(toObject(it));
+  };
+});
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/library/modules/es6.object.keys.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 Object.keys(O)
+var toObject = __webpack_require__("./node_modules/core-js/library/modules/_to-object.js");
+var $keys = __webpack_require__("./node_modules/core-js/library/modules/_object-keys.js");
+
+__webpack_require__("./node_modules/core-js/library/modules/_object-sap.js")('keys', function () {
+  return function keys(it) {
+    return $keys(toObject(it));
   };
 });
 
@@ -14864,6 +14896,7 @@ var App = function (_Component) {
     value: function componentDidMount() {
       this.fetchProfile();
       this.fetchExperience();
+      this.fetchSkills();
       this.fetchProjects();
 
       this.fixWindow();
@@ -14899,16 +14932,31 @@ var App = function (_Component) {
       });
     }
   }, {
+    key: 'fetchSkills',
+    value: function fetchSkills() {
+      var _this4 = this;
+
+      fetch('data/skills.json').then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        console.log('got the skills!');
+        console.log(json);
+        _this4.setState({
+          skills: json
+        });
+      });
+    }
+  }, {
     key: 'fetchProjects',
     value: function fetchProjects() {
-      var _this4 = this;
+      var _this5 = this;
 
       fetch('data/projects.json').then(function (response) {
         return response.json();
       }).then(function (json) {
         console.log('got the projects!');
         console.log(json);
-        _this4.setState({
+        _this5.setState({
           projects: json
         });
       });
@@ -14926,7 +14974,7 @@ var App = function (_Component) {
           { className: 'main-wrapper' },
           _react2.default.createElement(_summary2.default, { profile: this.state.profile }),
           _react2.default.createElement(_experience2.default, { positions: this.state.experience }),
-          _react2.default.createElement(_skills2.default, { skills: this.state.profile.skills }),
+          _react2.default.createElement(_skills2.default, { skills: this.state.skills }),
           _react2.default.createElement(_projects2.default, { projects: this.state.projects })
         )
       );
@@ -14944,6 +14992,61 @@ exports.default = App;
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "db81e2e4dabee186395659adf53aa32b.jpg";
+
+/***/ }),
+
+/***/ "./src/components/ListItem.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__("./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ListItem = function ListItem(props) {
+  var ListType = "ul";
+  if (props.item.gui && props.item.gui.type) {
+    ListType = props.item.gui.type;
+  }
+
+  return _react2.default.createElement(
+    "li",
+    null,
+    props.item.key && _react2.default.createElement(
+      "p",
+      null,
+      props.item.key,
+      ":"
+    ),
+    _react2.default.createElement(
+      ListType,
+      { className: props.item.gui.className },
+      props.item.values.map(function (item, index) {
+        if (item.values) {
+          return _react2.default.createElement(ListItem, {
+            item: item
+          });
+        } else {
+          return _react2.default.createElement(
+            "li",
+            { key: index },
+            item
+          );
+        }
+      })
+    )
+  );
+};
+
+exports.default = ListItem;
 
 /***/ }),
 
@@ -14993,42 +15096,11 @@ var _experience = __webpack_require__("./src/components/experience.css");
 
 var _experience2 = _interopRequireDefault(_experience);
 
+var _ListItem = __webpack_require__("./src/components/ListItem.js");
+
+var _ListItem2 = _interopRequireDefault(_ListItem);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var ListItem = function ListItem(props) {
-  var ListType = "ul";
-  if (props.item.gui && props.item.gui.type) {
-    ListType = props.item.gui.type;
-  }
-
-  return _react2.default.createElement(
-    'li',
-    null,
-    props.item.key && _react2.default.createElement(
-      'p',
-      null,
-      props.item.key,
-      ':'
-    ),
-    _react2.default.createElement(
-      ListType,
-      { className: props.item.gui.className },
-      props.item.values.map(function (item, index) {
-        if (item.values) {
-          return _react2.default.createElement(ListItem, {
-            item: item
-          });
-        } else {
-          return _react2.default.createElement(
-            'li',
-            { key: index },
-            item
-          );
-        }
-      })
-    )
-  );
-};
 
 var Experience = function (_Component) {
   (0, _inherits3.default)(Experience, _Component);
@@ -15049,7 +15121,7 @@ var Experience = function (_Component) {
         var details = position.description.map(function (item, j) {
 
           if (item.values) {
-            return _react2.default.createElement(ListItem, {
+            return _react2.default.createElement(_ListItem2.default, {
               item: item
             });
           } else {
@@ -15428,6 +15500,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _keys = __webpack_require__("./node_modules/babel-runtime/core-js/object/keys.js");
+
+var _keys2 = _interopRequireDefault(_keys);
+
 var _getPrototypeOf = __webpack_require__("./node_modules/babel-runtime/core-js/object/get-prototype-of.js");
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -15451,6 +15527,10 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 var _react = __webpack_require__("./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _ListItem = __webpack_require__("./src/components/ListItem.js");
+
+var _ListItem2 = _interopRequireDefault(_ListItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15484,7 +15564,7 @@ var Skills = function (_Component) {
 
       var skills = this.props.skills;
 
-      if (!skills.frontend || !skills.backend) {
+      if (!skills) {
         return _react2.default.createElement('div', null);
       }
 
@@ -15505,10 +15585,6 @@ var Skills = function (_Component) {
         );
       };
 
-      var skillSetFrontend = skills.frontend.tools.map(template);
-      var skillSetBackend = skills.backend.tools.map(template);
-      var skillSetMobile = skills.mobile.tools.map(template);
-
       return _react2.default.createElement(
         'section',
         { className: 'skills-section section' },
@@ -15516,56 +15592,66 @@ var Skills = function (_Component) {
           'h2',
           { className: 'section-title' },
           _react2.default.createElement('i', { className: 'fa fa-rocket' }),
-          'Skills & Proficiency'
+          'Technical Specialist'
         ),
-        _react2.default.createElement(
-          'h3',
-          null,
-          'Frontend'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'skillset' },
-          skillSetFrontend
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Extra: ',
-          skills.frontend.extra.join(', ')
-        ),
-        _react2.default.createElement(
-          'h3',
-          null,
-          'Backend'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'skillset' },
-          skillSetBackend
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Extra: ',
-          skills.backend.extra.join(', ')
-        ),
-        _react2.default.createElement(
-          'h3',
-          null,
-          'Mobile'
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'skillset' },
-          skillSetMobile
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Extra: ',
-          skills.mobile.extra.join(', ')
-        )
+        (0, _keys2.default)(skills).map(function (key, index) {
+          var details = null;
+          if (skills[key].description) {
+            details = skills[key].description.map(function (item, j) {
+              if (item.values) {
+                return _react2.default.createElement(_ListItem2.default, {
+                  item: item
+                });
+              } else {
+                return _react2.default.createElement(
+                  'p',
+                  { key: j },
+                  item
+                );
+              }
+            });
+          }
+
+          return _react2.default.createElement(
+            'div',
+            { key: index },
+            _react2.default.createElement(
+              'h3',
+              null,
+              key
+            ),
+            details,
+            _react2.default.createElement(
+              'div',
+              { className: 'skillset' },
+              skills[key].tools.map(template)
+            ),
+            skills[key].extra && _react2.default.createElement(
+              'p',
+              null,
+              _react2.default.createElement(
+                'b',
+                null,
+                'Extra'
+              ),
+              ': ',
+              skills[key].extra.join(', ')
+            ),
+            skills[key].projects && _react2.default.createElement(
+              'p',
+              null,
+              _react2.default.createElement(
+                'b',
+                null,
+                'Projects'
+              ),
+              ': ',
+              skills[key].projects.map(function (item) {
+                return item.name;
+              }).join(', ')
+            )
+          );
+        })
       );
     }
   }]);
@@ -15755,4 +15841,4 @@ module.exports = __webpack_require__("./public/css/styles.css");
 /***/ })
 
 },[[0,0]]]);
-//# sourceMappingURL=1.87097304fdeda7172962-bundle.js.map
+//# sourceMappingURL=1.fd9b58ffe441180869c1-bundle.js.map
