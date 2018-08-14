@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import style from './project.css';
 
 class Projects extends Component {
   constructor(props) {
@@ -39,7 +40,24 @@ class Projects extends Component {
         <div className="item" key={index}>
           <h3 className="project-title">{ project.title }</h3>
           <p className="project-tagline">{ project.description }</p>
-          <p className="project-tagline">{ project.tags }</p>
+          {
+            project.techStack && project.techStack.length > 0 &&
+            <p className="project-techstack"><b>Tech stack</b>: { project.techStack.join(", ") }</p>
+          }
+          <p className="project-info"><b>Main duty</b>:
+            {
+              project.mainDuty.type && project.mainDuty.type == "list" && project.mainDuty.data && project.mainDuty.data.length > 0 &&
+              <ul>
+                {project.mainDuty.data.map(item => <li>{item}</li>)}
+              </ul>
+            }
+            {
+              (!project.mainDuty.type || project.mainDuty.type != "list") &&
+              project.mainDuty
+            }
+          </p>
+          <p className="project-info"><b>Members</b>: { project.noPeople }, <b>Market</b>: { project.market }</p>
+          {/* <p className="project-tagline">{ project.tags }</p> */}
           <p><a href={project.url} target="_blank">{ project.url }</a></p>
           <div className="row gallery">
             { gallery }
@@ -59,7 +77,7 @@ class Projects extends Component {
       <section className="section projects-section">
         <h2 className="section-title">
           <i className="fa fa-archive" />
-          Projects
+          Featured Projects
         </h2>
         { content }
       </section>
