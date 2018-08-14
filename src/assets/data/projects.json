@@ -1,52 +1,135 @@
 [
 	{
-		"title": "Snappy Spanish",
-		"description": "iOS application for learning spanish",
-		"tags": "iOS, Core Data, AVFoundation",
+		"title": "Central Power Corporation",
+		"description": "",
+		"tags": "An enterprise system used for task management, document management with complex workflow that serving 12k employees",
+    "techStack": [".NET", "SignalR", "ReactJS", "Electron", "OpenResty", "ElasticSearch", "Redis", "SQL Server", "Zabbix", "ErrBit"],
+    "mainDuty": {
+      "type": "list",
+      "data": [
+        "Design system architecture",
+        "Technical Proposal",
+        "Create proxy layer and optimize the system to serve 12k concurrent requests per second",
+        "Monitoring performance of API response via Zabbix",
+        "Create alert system and auto recover mode"
+      ]
+    },
+    "market": "Vietnam",
+    "projectDuration": 24,
+    "noPeople": 30,
 		"url": null,
-		"thumbnail": "snappy001.jpg",
+		"thumbnail": "cpc/1.jpg",
 		"gallery": [
-			"snappy001.jpg",
-			"snappy002.png",
-			"snappy003.jpg",
-			"snappy004.jpg"
+			"cpc/1.jpg",
+			"cpc/2.jpg",
+			"cpc/3.jpg",
+			"cpc/4.jpg",
+      "cpc/5.jpg",
+      "cpc/6.jpg",
+      "cpc/7.jpg"
 		]
 	},
 	{
-		"title": "Alfa",
-		"description": "",
-		"tags": "Laravel",
-		"url": "http://alfa.com.co",
-		"thumbnail": "alfa001.png",
+		"title": "Ideapod",
+		"description": "The platform for sharing ideas",
+    "techStack": ["AngularJS", "AWS", "MongoDB", "CloudSearch", "TravisCI"],
+    "mainDuty": "Team leader & Senior Frontend Developer",
+		"tags": "",
+    "market": "US",
+		"url": "https://ideapod.com",
+    "projectDuration": "18",
+    "noPeople": 6,
+		"thumbnail": "ideapod/1.png",
 		"gallery": [
-			"alfa001.png",
-			"alfa002.png",
-			"alfa003.png"
+      "ideapod/1.png",
+      "ideapod/2.png",
+      "ideapod/3.png",
+      "ideapod/4.png"
 		]
 	},
 	{
-		"title": "Ford Consumer Experience",
-		"description": "",
-		"tags": "Laravel, Angular, cordova",
-		"url": "http://miguiaford.com.co",
-		"thumbnail": "fordconsumer001.png",
+		"title": "Youlook",
+		"description": "Youlook is a network which combines both Social Graph and Knowledge Graph. Knowledge is soul of this network and it is contributed by users. Not like Wikipedia, instead of limiting users from showing their opinion, Youlook pump up data that have most positive feedback from users based on social interactions.",
+    "techStack": ["AngularJS", "Apache", "NGINX", "AWS EC2", "CloudFront", "Amazon S3", "MySQL", "Redis", "Neo4j", "MongoDB"],
+    "mainDuty": "Design project architecture and technical from overall to detail. Researching and choosing project technologies.",
+		"tags": "Social Network",
+    "market": "US",
+		"url": "https://youlook.net",
+    "projectDuration": "24",
+    "noPeople": 49,
+		"thumbnail": "youlook/1.png",
 		"gallery": [
-			"fordconsumer001.png",
-			"fordconsumer002.png",
-			"fordconsumer003.png",
-			"fordconsumer004.png"
+			"youlook/1.png",
+      "youlook/2.png",
+      "youlook/3.png",
+      "youlook/4.png"
 		]
 	},
 	{
-		"title": "EURunners",
-		"description": "iOS application designed for runners in Venezuela",
-		"tags": "iOS, SQLite, Objective-C",
-		"url": "https://itunes.apple.com/us/app/eurunners/id983067889",
-		"thumbnail": "eurunners001.jpeg",
+		"title": "Roomi (Phase 1)",
+		"description": "Roomi makes it easy to find and connect with compatible roommates. Whether you’re renting out.",
+    "techStack": ["AngularJS", "Yii", "RESTFul", "ParseDB", "AWS", "Craigslist API"],
+    "mainDuty": "Senior Frontend developer that development back office for administrative use",
+		"tags": "Social Network",
+    "market": "US",
+		"url": "https://team.roomiapp.com/",
+    "projectDuration": "4",
+    "noPeople": 2,
+		"thumbnail": "roomi/1.png",
 		"gallery": [
-			"eurunners001.jpeg",
-			"eurunners002.jpeg",
-			"eurunners003.jpeg"
+			"roomi/1.png",
+      "roomi/2.png",
+      "roomi/3.png",
+      "roomi/4.png",
+      "roomi/5.png"
+		]
+	},
+	{
+		"title": "Image Luxury Nail",
+		"description": "The system is an interconnection of some partials like the Android app, iOS app, and the website for the clients to make appointments to the salons and track their appointments, also receive the system notifications. The Back office website for the admin and general manager to operate the whole system like manage user accounts, manage clients and permissions, and manage the whole salon's information of Images Luxury Nail Lounge, the reporting etc… The software at each salon for the salon manager to manage the salon’s activities. The project with 40+ screens and 60+ components (including Smart/Dump/Page components).",
+    "techStack": ["ReactJS", "Redux"],
+    "mainDuty": "Frontend Developer & Release Manager",
+		"tags": "Social Network",
+    "market": "US",
+		"url": "https://team.roomiapp.com/",
+    "projectDuration": "14",
+    "noPeople": 30,
+		"thumbnail": "luxurynail/1.png",
+		"gallery": [
+			"luxurynail/1.png",
+      "luxurynail/2.png",
+      "luxurynail/3.png",
+      "luxurynail/4.png"
+		]
+	},
+	{
+		"title": "Justlook",
+		"description": "Social Network for businesses & reviewers. The system is providing users information about local enterprises in Wollongong, Australia. Users can easily find any enterprise as well as giving comments or rating for their favourite business on this web.",
+    "techStack": ["PHP", "Yii Framework", "Javascript", "JQuery", "MySQL", "MongoDB", "Neo4j", "Sphinx", "Nginx", "Memcached", "SQLite", "Nodejs", "ExpressJS"],
+    "mainDuty": "Project manager & System architecture",
+		"tags": "Social Network",
+    "market": "Australia",
+		"url": "http://justlook.com.au",
+    "projectDuration": "18",
+    "noPeople": 15,
+		"thumbnail": "",
+		"gallery": [
+
+		]
+	},
+	{
+		"title": "Docker Studio",
+		"description": "Create a desktop application for Windows/Ubuntu/MacOS that can manage a workflow of creating docker images/containers and connection between them",
+    "techStack": ["ReactJS", "Electron"],
+    "mainDuty": "Senior Developer",
+		"tags": "docker",
+    "market": "US",
+		"url": "",
+    "projectDuration": "2",
+    "noPeople": 1,
+		"thumbnail": "",
+		"gallery": [
+
 		]
 	}
 ]
